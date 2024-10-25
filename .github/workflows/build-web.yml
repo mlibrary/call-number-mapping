@@ -13,3 +13,4 @@ jobs:
       image_name: ${{ vars.IMAGE_NAME }}
       tag: ${{ github.sha }}
       dockerfile: Dockerfile
+    secrets: inherit
