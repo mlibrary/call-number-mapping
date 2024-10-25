@@ -1,0 +1,21 @@
+<div class="box">
+  <h2>Search Results for {{ description|e('html') }}</h2>
+  <br />
+  Click a topic to view all mappings for that topic.
+  <table class="assignments">
+    <tr>
+      <th class="light wide">Narrow Topic</th>
+      <th class="light">Range Begin</th>
+      <th class="light">Range End</th>
+      <th class="wide">Notes</th>
+    </tr>
+    {% for result in results %}
+      <tr>
+        <td class="light wide"> <a href="index.php?narrow={{ result.id|e('html') }}&type={{ type|e('html') }}">{{ result.name|e('html') }}</a> </td>
+        <td class="light"> {{ result.alphaStart|e('html') }} {{ result.numStart|e('html') }} {{ result.cutStart|e('html') }} </td>
+        <td class="light"> {{ result.alphaEnd|e('html') }} {{ result.numEnd|e('html') }} {{ result.cutEnd|e('html') }} </td>
+        <td class="wide"> {{ result.notes|e('html') }} </td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>

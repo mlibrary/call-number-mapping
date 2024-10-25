@@ -1,0 +1,24 @@
+<div class="box">
+  <h2>Associated mappings for: {{ topic.name|e('html') }}</h2>
+  <div>
+    To edit this mapping, enter the new beginning and ending call number and click the "<strong>Update mapping</strong>" button.
+  </div><br />
+  <form method="post" action="update.php">
+    <input type="hidden" name="type" value="{{ type|e('html') }}" />
+    <input type="hidden" name="narrow" value="{{ topic.id|e('html') }}" />
+    <input type="hidden" name="id" value="{{ range.id|e('html') }}" />
+    <div>
+        Range begin:
+        <input size="3"  type="text" name="alphaStart"  value="{{ range.alphaStart|e('html') }}" />
+        <input size="12" type="text" name="numberStart" value="{{ range.numStart|e('html') }}" />
+        <input size="5"  type="text" name="cutterStart" value="{{ range.cutStart|e('html') }}" /><br />
+        Range end:
+        <input size="3"  type="text" name="alphaEnd"  value="{{ range.alphaEnd|e('html') }}" />
+        <input size="12" type="text" name="numberEnd" value="{{ range.numEnd|e('html') }}" />
+        <input size="5"  type="text" name="cutterEnd" value="{{ range.cutEnd|e('html') }}" /><br />
+        Range note:
+        <textarea name="notes">{{ range.notes|e('html') }}</textarea><br />
+        <input type="submit" value="Update mapping" /><input type="reset" value="Reset form" />
+    </div>
+  </form>
+</div>

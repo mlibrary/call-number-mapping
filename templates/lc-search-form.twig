@@ -1,0 +1,38 @@
+<div class="box">
+  <h2>Look for Library of Congress Call Numbers with</h2>
+  <form method="post" action="lcsearch.php">
+    <div class="clear">
+      <div class="column"> Alpha: </div>
+      <div class="column"> &nbsp;</div>
+      <div class="column"> <input type="text" name="alpha" size="5" value="{{ alpha|e('html') }}"> </div>
+      <div class="lastcolumn"> <em>Required.</em> Use between one and three characters (<strong>e.g., "RC"</strong>) </div>
+    </div>
+    <div class="clear">
+      <div class="column"> +Number: </div>
+      <div class="column">
+        <select name="num_op">
+          {% for option in options %}
+            <option{% if option == num_op %} selected="selected"{% endif %}>{{ option|e('html') }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="column"> <input type="text" name="num" size="5" value="{{ num|e('html') }}"> </div>
+      <div class="lastcolumn"> Optional. (<strong>e.g., >= 350</strong>) </div>
+    </div>
+    <div class="clear">
+      <div class="column"> +Cut: </div>
+      <div class="column">
+        <select name="cut_op">
+          {% for option in options %}
+            <option{% if option == cut_op %} selected="selected"{% endif %}>{{ option|e('html') }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="column"> <input type="text" name="cut" size="5" value="{{ cut }}"> </div>
+      <div class="lastcolumn"> Optional. One alpha followed by one or more numerals (<strong>e.g., >= N35</strong>) </div>
+    </div>
+
+    <br />
+    <input type="submit" value="Search" />
+  </form>
+</div>

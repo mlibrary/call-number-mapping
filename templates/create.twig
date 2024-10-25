@@ -1,0 +1,25 @@
+<div class="box">
+  <h2>Add a Topic</h2>
+  <div>Add a new Topic by completing the form below. You probably want to to select a parent to be associated with this new Topic.</div>
+  <br />
+  <div>
+    <form action="newtopic.php">
+      <div>
+        <div class="widecolumn">New Topic:</div>
+        <div class="lastcolumn"> <input type="text" name="name" /> </div>
+      </div>
+      <div>
+        <div class="widecolumn">Associate With Existing Parent:</div>
+        <div class="lastcolumn">
+          <select name="parent">
+            {% for topic in topics %}
+              <option value="{{ topic.id|e('html') }}">{{ topic.name|e('html') }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <input type="submit" value="Add Topic">
+    </form>
+  </div>
+</div>
+

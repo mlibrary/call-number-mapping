@@ -1,0 +1,112 @@
+<div class="box">
+  <h2>Associated mappings for: {{ topic.name|e('html') }}</h2>
+</div>
+<div>
+  To add a mapping, enter a beginning and ending call number and click the "<strong>Add new mapping</strong>" button.
+</div>
+<br />
+<form method="post" action="add.php">
+  <input type="radio" name="type" value="lc" checked />Library of Congress
+  <input type="radio" name="type" value="dewey" />Dewey
+  <input type="hidden" value="{{ topic.id|e('html') }}" name="id" />
+  <div>
+    <div class="clear">
+      <p>
+        Range begin:
+      </p>
+      <div class="clear">
+        <div class="column">Alpha</div>
+        <div class="mediumcolumn">Number</div>
+        <div class="column">Cutter</div>
+        <div class="lastcolumn"></div>
+      </div>
+      <div class="clear">
+        <div class="column">
+          <input size="3"  type="text" name="alphaStart" />
+        </div>
+        <div class="mediumcolumn">
+          <input size="12" type="text" name="numberStart" />
+        </div>
+        <div class="column">
+          <input size="5"  type="text" name="cutterStart" />
+        </div>
+        <div class="lastcolumn">
+        </div>
+      </div>
+    </div>
+    <div class="clear">
+      <p>
+        Range end:
+      </p>
+      <div class="clear">
+        <div class="column">Alpha</div>
+        <div class="mediumcolumn">Number</div>
+        <div class="column">Cutter</div>
+        <div class="lastcolumn"></div>
+      </div>
+      <div class="clear">
+        <div class="column">
+          <input size="3"  type="text" name="alphaEnd" />
+        </div>
+        <div class="mediumcolumn">
+          <input size="12" type="text" name="numberEnd" />
+        </div>
+        <div class="column">
+          <input size="5"  type="text" name="cutterEnd" />
+        </div>
+        <div class="lastcolumn"> </div>
+      </div>
+    </div>
+
+    <div class="clear">
+      Range note:<br />
+      <textarea name="notes" rows="5" cols="80"></textarea>
+    </div>
+    <br />
+    <input type="submit" value="Add new mapping" /><input type="reset" value="Reset form" />
+  </div>
+</form>
+
+<div class="box">
+  <div>
+    To copy one or more ranges to another topic, select each range and click the "<strong>copy selected ranges</strong>" button below.
+  </div>
+  <div>
+    <form action="copy.php" method="post">
+      <input type="hidden" value="{{ topic.id|e('html') }}" name="id" />
+      <table class="assignments">
+        <tr>
+          <th class="dark">Select</th> <th class="light">Range Begin</th> <th class="light">Range End</th> <th class="dark">Notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th> <th class="light"> </th> <th class="light"> </th>
+        </tr>
+        {% for assignment in lc %}
+          <tr>
+            <td class="dark"><input type="checkbox" name="lc[]" value="{{ assignment.id|e('html') }}" /></td>
+            <td class="light"> {{ assignment.alphaStart|e('html') }} {{ assignment.numStart|e('html') }} {{ assignment.cutStart|e('html') }} </td>
+            <td class="light"> {{ assignment.alphaEnd|e('html') }} {{ assignment.numEnd|e('html') }} {{ assignment.cutEnd|e('html') }} </td>
+            <td class="dark"> {{ assignment.notes|e('html') }} </td>
+            <td class="light"> <a href="edit.php?id={{ assignment.id|e('html') }}&type=lc" target="_blank">EDIT</a> </td>
+            <td class="light"> <a href="delete.php?id={{ assignment.id|e('html') }}&type=lc&narrow={{ topic.id|e('html') }}">DELETE</a> </td>
+          </tr>
+        {% endfor %}
+        {%for assignment in dewey %}
+          <tr>
+            <td class="dark"><input type="checkbox" name="dewey[]" value="{{ assignment.id|e('html') }}"/></td>
+            <td class="light"> {{ assignment.numStart|e('html') }} </td>
+            <td class="light"> {{ assignment.numEnd|e('html') }} </td>
+            <td class="dark"> {{ assignment.notes|e('html') }} </td>
+            <td class="light"> <a href="edit.php?id={{ assignment.id|e('html') }}&type=dewey" target="_blank">EDIT</a></td>
+            <td class="light"> <a href="delete.php?id={{ assignment.id|e('html') }}&type=dewey&narrow={{ topic.id|e('html') }}">DELETE</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+      <select name="{{ select.name|e('html') }}">
+        {% for option in select.options %}
+          <option value="{{ option.id|e('html') }}"{% if option.id == select.selected %}selected="true"{% endif %}>{{ option.name|e('html') }}</option>
+        {% endfor %}
+      </select>
+
+      <input type="submit" value="Copy selected ranges" />
+    </form>
+  </div>
+</div>
+
