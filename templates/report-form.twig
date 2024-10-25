@@ -1,0 +1,23 @@
+<div class="box">
+  <div>
+    <h2>Export HLB Data</h2>
+    To export mappings for an HLB category, browse to that category using the menu below and click the <strong>Export Mappings</strong> button.
+    To export data for all categories, use the first menu option All Categories.
+  </div>
+  <br />
+  <div>
+    <form action="reportout.php">
+      <div>
+        <div class="widecolumn">Topic:</div>
+        <div class="lastcolumn">
+          <select name="topic">
+            {% for topic in topics %}
+              <option value="{{ topic.id|e('html') }}">{{ topic.name|e('html') }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <input type="submit" value="Export Mappings">
+    </form>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+{
+    "name": "umich/call-number-mapping",
+    "type": "project",
+    "license": "BSD-3-clause",
+    "autoload": {
+        "psr-4": {
+            "Umich\\CallNumberMapping\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Albert Bertram",
+            "email": "bertrama@umich.edu"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}

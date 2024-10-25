@@ -1,0 +1,19 @@
+<div class="box">
+  <h2>Look for Dewey Call Numbers with</h2>
+  <form method="post" action="deweysearch.php">
+    <div class="clear">
+      <div class="column"> +Number: </div>
+      <div class="column">
+        <select name="num_op">
+          {% for option in options %}
+            <option {% if option == num_op %} selected="selected"{% endif %}>{{ option|e('html') }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="column"> <input type="text" name="num" size="5" value="{{ num|e('html') }}"> </div>
+      <div class="lastcolumn"> Required. (<strong>e.g., >= 800</strong>) </div>
+    </div>
+    <br />
+    <input type="submit" value="Search" />
+  </form>
+</div>

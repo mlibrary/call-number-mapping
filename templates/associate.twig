@@ -1,0 +1,32 @@
+<div class="box">
+  <h2>Create an Association between Topics</h2>
+  <div>
+    Existing Topics can be associated with more than parent Topic. Use the pulldown menus to associate a Topics with a Level One.
+  </div>
+  <br />
+  <div>
+    <form action="associate.php">
+      <div>
+        <div class="widecolumn"> Child Topic:</div>
+        <div class="lastcolumn">
+          <select name="child">
+            {% for topic in topics %}
+              <option value="{{topic.id|e('html')}}">{{topic.name|e('html')}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="widecolumn">Associate With Parent:</div>
+        <div class="lastcolumn">
+          <select name="parent">
+            {% for topic in topics %}
+              <option value="{{topic.id|e('html')}}">{{topic.name|e('html')}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <input type="submit" value="Associate Topics">
+    </form>
+  </div>
+</div>

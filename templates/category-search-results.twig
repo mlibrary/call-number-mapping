@@ -1,0 +1,37 @@
+<div class="box">
+  <h2>Topic Search Results</h2>
+  <div>
+    <table class="assignments">
+      <tr>
+        <th class="light">Topic Name</th>
+        <th class="light wide">Topic Parents</th>
+        <th class="light wide">Topic Children</th>
+        <th class="light"># Mappings</th>
+        <th class="light"> Action </th>
+      </tr>
+      {% for topic in results %}
+        <tr>
+          <td class="light"> {{ topic.name|e('html') }} </td>
+          <td class="light wide">
+            {% for parent in topic.parents %}
+              {{ parent|e('html') }}<br />
+            {% endfor %}
+          </td>
+          <td class="light wide">
+            {% for child in topic.children %}
+              {{ child|e('html') }}<br />
+            {% endfor %}
+          </td>
+          <td class="light"> {{ topic.count|e('html') }}</td>
+          <td class="light">
+            <form action="deletetopic.php" method="post" onsubmit="return confirm('Really delete topic: {{ topic.name|e('html') }} with {{ topic.count|e('html') }} mappings?')">
+              <input type="hidden" name="id" value="{{ topic.id|e('html') }}" />
+              <input type="hidden" name="search" value="{{ search|e('html') }}" />
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
