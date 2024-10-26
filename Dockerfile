@@ -16,4 +16,6 @@ COPY composer.lock composer.json /var/www/
 
 RUN cd /var/www && composer install
 
-COPY src templates html /var/www/
+COPY src /var/www/src
+COPY html /var/www/html
+COPY templates /var/www/templates
