@@ -1,0 +1,32 @@
+#!/bin/bash
+
+TMPFILE=$(mktemp -p /tmp "update.ldif.XXXXXXXX")
+
+username="$1"
+directory_file="$2"
+
+if [ x"$username" = x"" ] ; then
+  echo "usage: $0 <username> <staff-directory-json-file>"
+  echo
+  echo "<username> is your uniqname"
+  echo "<staff-directory-json-file> is https://staff.lib.umich.edu/staff-directory.json"
+  exit 1
+fi
+
+cat > ${TMPFILE} <<EOF
+dn: cn=ulib-dnd-cnm-admin,ou=User Groups,ou=Groups,dc=umich,dc=edu
+changetype: modify
+replace: member
+EOF
+
+for i in $(jq '.[] | .uniqname' "${directory_file}" | sed -e 's/"//g') ; do
+  echo "member: uid=$i,ou=People,dc=umich,dc=edu" >> $TMPFILE
+done
+
+ldapmodify \
+  -H ldap://ldap.umich.edu \
+  -f  "${TMPFILE}"\
+  -D "uid=${username},ou=People,dc=umich,dc=edu" \
+  -W
+
+rm "${TMPFILE}"
