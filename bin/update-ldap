@@ -3,13 +3,13 @@
 TMPFILE=$(mktemp -p /tmp "update.ldif.XXXXXXXX")
 
 username="$1"
-directory_file="$2"
+directory_file="https://cms.lib.umich.edu/api/solr/staff"
+ldap_host="ldap://ldap.umich.edu"
 
 if [ x"$username" = x"" ] ; then
-  echo "usage: $0 <username> <staff-directory-json-file>"
+  echo "usage: $0 <username>"
   echo
   echo "<username> is your uniqname"
-  echo "<staff-directory-json-file> is https://staff.lib.umich.edu/staff-directory.json"
   exit 1
 fi
 
@@ -19,14 +19,27 @@ changetype: modify
 replace: member
 EOF
 
-for i in $(jq '.[] | .uniqname' "${directory_file}" | sed -e 's/"//g') ; do
+
+for i in $(curl -s $directory_file| jq '.[].name[].value' | sed -e 's/"//g') ; do
   echo "member: uid=$i,ou=People,dc=umich,dc=edu" >> $TMPFILE
 done
 
-ldapmodify \
-  -H ldap://ldap.umich.edu \
-  -f  "${TMPFILE}"\
-  -D "uid=${username},ou=People,dc=umich,dc=edu" \
-  -W
+echo "Check the line count below before entering your password."
+echo
+echo -n "      "
+wc -l "${TMPFILE}"
+echo
+
+if [ x"$(wc -l "${TMPFILE}" | awk '{print $1}')" = x"3" ] ; then
+  echo "No members in '${TMPFILE}'"
+  echo "Cowardly not updating the acls group due to uncertainty."
+  exit 2
+else
+  ldapmodify \
+    -H "${ldap_host}" \
+    -f  "${TMPFILE}" \
+    -D "uid=${username},ou=People,dc=umich,dc=edu" \
+    -W
+fi
 
 rm "${TMPFILE}"
