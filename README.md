@@ -8,7 +8,7 @@ docker-compose build
 docker-compose up -d
 
 # Composer install for the development volume
-docker-compose run --rm --user "${UID}:${GID}" web bash -c 'cd /var/www && composer install'
+docker-compose run --rm --user "$(id -u):$(id -g)" web bash -c 'cd /var/www && composer install'
 
 # Optional:  Load data
 docker-compose exec -T db bash -c 'mysql -u "$MARIADB_USER" -p"$MARIADB_PASSWORD" "$MARIADB_DATABASE"' < data.sql
