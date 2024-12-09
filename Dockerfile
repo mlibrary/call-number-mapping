@@ -10,7 +10,8 @@ RUN apt-get update \
  && chown www-data:www-data /var/cache/apache2/mod_auth_openidc/oidc-sessions /var/cache/apache2/twig \
  && docker-php-ext-install pdo_mysql \
  && php -r "copy('https://getcomposer.org/download/latest-stable/composer.phar', '/usr/local/bin/composer');" \
- && chmod +x /usr/local/bin/composer
+ && chmod +x /usr/local/bin/composer \
+ && git config --global --add safe.directory /var/www
 
 COPY auth_openidc.conf /etc/apache2/mods-enabled/auth_openidc.conf
 COPY composer.lock composer.json /var/www/
