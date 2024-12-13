@@ -5,8 +5,8 @@
   </div>
   <form action="modify.php">
     <div>
-      <div class="column">Topic:</div>
-      <div class="column"> <input type="text" name="search" value="{{ search|e('html') }}" /> </div>
+      <div class="column"><label for="searchForTopic">Topic:</label></div>
+      <div class="column"> <input type="text" name="search" value="{{ search|e('html') }}" id="searchForTopic"/> </div>
     </div>
     <div class="lastcolumn">
       <input type="submit" value="Search">

@@ -7,9 +7,9 @@
   <div>
     <form action="associate.php">
       <div>
-        <div class="widecolumn"> Child Topic:</div>
+        <div class="widecolumn"><label for="childTopic">Child Topic:</label></div>
         <div class="lastcolumn">
-          <select name="child">
+          <select name="child" id="childTopic">
             {% for topic in topics %}
               <option value="{{topic.id|e('html')}}">{{topic.name|e('html')}}</option>
             {% endfor %}
@@ -17,9 +17,9 @@
         </div>
       </div>
       <div>
-        <div class="widecolumn">Associate With Parent:</div>
+        <div class="widecolumn"><label for="associateWithParent">Associate With Parent:</label></div>
         <div class="lastcolumn">
-          <select name="parent">
+          <select name="parent" id="associateWithParent">
             {% for topic in topics %}
               <option value="{{topic.id|e('html')}}">{{topic.name|e('html')}}</option>
             {% endfor %}

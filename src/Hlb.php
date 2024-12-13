@@ -91,7 +91,7 @@ ORDER BY trim(hlb3_topic.name)";
     foreach ($results as $r) {
       $str .= '<li>' ;
       $str .=  '<a href="index.php?narrow=' . htmlentities($r['id']) . '">' . htmlentities($r['name']) . '</a>'; 
-      $str .= '<form style="display: inline;" action="removeassociation.php" method="post"><input type="hidden" value="'.htmlentities($id).'" name="parent"><input type="hidden" value="'.htmlentities($r['id']).'" name="child"><input type="submit" value="Remove this association"></form>';
+      $str .= '<form style="display: inline;" action="removeassociation.php" method="post"><input type="hidden" value="'.htmlentities($id).'" name="parent"><input type="hidden" value="'.htmlentities($r['id']).'" name="child"><input type="submit" class="marginLeftHalf" value="Remove this association"></form>';
       if (array_search($r['id'],$list) === FALSE) {
         $str .= $this->subtree($r['id'], array_merge($list, array($r['id'])));
       } else {

@@ -5,13 +5,13 @@
   <div>
     <form action="newtopic.php">
       <div>
-        <div class="widecolumn">New Topic:</div>
-        <div class="lastcolumn"> <input type="text" name="name" /> </div>
+        <div class="widecolumn"><label for="newTopic">New Topic:</label></div>
+        <div class="lastcolumn"> <input type="text" name="name" id="newTopic" /> </div>
       </div>
       <div>
-        <div class="widecolumn">Associate With Existing Parent:</div>
+        <div class="widecolumn"><label for="associateWithExistingParent">Associate With Existing Parent:</label></div>
         <div class="lastcolumn">
-          <select name="parent">
+          <select name="parent" id="associateWithExistingParent">
             {% for topic in topics %}
               <option value="{{ topic.id|e('html') }}">{{ topic.name|e('html') }}</option>
             {% endfor %}

@@ -8,9 +8,9 @@
   <div>
     <form action="reportout.php">
       <div>
-        <div class="widecolumn">Topic:</div>
+        <div class="widecolumn"><label for="exportHLBDataTopic">Topic:</label></div>
         <div class="lastcolumn">
-          <select name="topic">
+          <select name="topic" id="exportHLBDataTopic">
             {% for topic in topics %}
               <option value="{{ topic.id|e('html') }}">{{ topic.name|e('html') }}</option>
             {% endfor %}
