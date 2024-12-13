@@ -31,14 +31,27 @@ div.lastcolumn {
 }
 
 span.navigation {
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: .5rem 1rem;
     margin-left: 1em;
     margin-right: 1em;
+    display: inline-block;
 }
 
-span.active {
-    background-color: #aaa;
+.navigation{
+    border-bottom: 3px solid rgba(0,0,0,0);
+}
+
+.navigation > a{
+    text-decoration: none;
+    color: #000;
+}
+
+.active{
+    border-color: #1d7491;
+}
+
+.navigation:hover{
+    border-color: #1d7491;
 }
 
 span.browse_list {
@@ -146,7 +159,7 @@ img.mtag {
 }
 
 div.image {
-    padding-top: ;0px
+    padding-top: 0px;
     padding-bottom: 0px;
     margin-top: -20;
     margin-bottom: 0px;
@@ -196,14 +209,21 @@ table.assignments td, table.assignments th {
     width: 7em;
 }
 table.assignments td.light,table.assignments th.light {
-    background-color: #bbb;
+    background-color: #ddd;
 }
 table.assignments td.dark,table.assignments th.dark {
-    background-color: #777;
+    background-color: #bbb;
 }
 
 table.assignments td.wide, table.assignments th.wide {
     width: 15em;
-    background-color: #bbb;
+    background-color: #ddd;
 }
 
+td > a{
+    color: #106684;
+}
+
+.marginLeftHalf{
+    margin-left: .5rem;
+}

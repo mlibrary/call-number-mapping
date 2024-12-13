@@ -1,8 +1,11 @@
 <div class="box">
   To access or create mappings for a Library Browse Topic, browse to that topic using the menu below and click the <strong>Show Associated Mappings</strong> button. <br /><br />
   <form method="post">
-    Narrow Topic: <br />
-    <select name="{{ name }}">
+    <label for="narrow">
+     Narrow Topic: 
+    </label>
+    <br />
+    <select id="narrow" name="{{ name }}">
       {% for option in options %}
       <option value="{{ option.id|e('html') }}"{% if option.id == selected %}selected="true"{% endif %}>{{ option.name|e('html') }}</option>
       {% endfor %}
