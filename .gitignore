@@ -1,3 +1,5 @@
 /vendor/
 /.env
 /init-data-full.sql
+/.gitignore
+/.example.env
