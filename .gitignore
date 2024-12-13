@@ -2,4 +2,4 @@
 /.env
 /init-data-full.sql
 /.gitignore
-/.example.env
+/example.env
