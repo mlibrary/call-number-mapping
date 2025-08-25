@@ -3,6 +3,7 @@ FROM php:8.3-apache
 RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y jq ldap-utils libapache2-mod-authnz-external libapache2-mod-auth-openidc git unzip \
+ && apt-get autoremove -y \
  && apt-get clean \
  && (apt-get distclean || rm -rf  /var/cache/apt/archives /var/lib/apt/lists/*) \
  && a2enmod authnz_ldap \
