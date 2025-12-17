@@ -6,7 +6,7 @@ $twig = new \Twig\Environment($loader, ['cache' => getenv("TWIG_CACHE"), 'autoes
 $db = new \Umich\CallNumberMapping\Database;
 $hlb = new \Umich\CallNumberMapping\Hlb($db, $twig);
 
-$hlb->pageTitle('Browse & Map Library Browse Mappings');
+$hlb->pageTitle('Tree - Call Number Mapping');
 $hlb->setAuthenticated(!empty($_SERVER['REMOTE_USER']));
 $hlb->addContent('navigation', ['tree_active' => TRUE]);
 $hlb->addContent('tree', $hlb->getTreeParams());

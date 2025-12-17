@@ -23,7 +23,7 @@ $search_params = [
   'options' => [ '<=', '>=', '=' ],
 ];
 
-$hlb->pageTitle('Browse & Map Library Browse Mappings');
+$hlb->pageTitle('Dewey Search - Call Number Mapping');
 $hlb->setAuthenticated(!empty($_SERVER['REMOTE_USER']));
 $hlb->addContent('navigation', [ 'search_active' => 'active' ]);
 $hlb->addContent('search-overview', ['dewey_active' => 'active' ]);

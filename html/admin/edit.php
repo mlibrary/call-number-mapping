@@ -18,6 +18,7 @@ foreach (['id','type'] as $var) {
   }
 }
 
+$hlb->pageTitle('Edit - Call Number Mapping');
 $hlb->setAuthenticated(!empty($_SERVER['REMOTE_USER']));
 $hlb->addContent('navigation', ['edit_active' => 'active']);
 if (isset($id)) {
