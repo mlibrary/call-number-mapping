@@ -353,10 +353,19 @@ select {
         box-sizing: border-box;
     }
     
-    table.assignments {
-        display: block;
+    /* Enable horizontal scrolling for wide tables on mobile */
+    .box {
         overflow-x: auto;
-        white-space: nowrap;
+    }
+    
+    table.assignments {
+        min-width: 600px; /* Maintain minimum table width */
+    }
+    
+    table.assignments td,
+    table.assignments th {
+        white-space: normal;
+        word-wrap: break-word;
     }
 }
 
