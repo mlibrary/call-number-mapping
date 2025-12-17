@@ -358,10 +358,6 @@ select {
         overflow-x: auto;
     }
     
-    table.assignments {
-        min-width: 600px; /* Maintain minimum table width */
-    }
-    
     table.assignments td,
     table.assignments th {
         white-space: normal;
