@@ -230,6 +230,7 @@ td > a{
 table.assignments td a {
     display: inline-block;
     padding: 0.5em 0.75em;
+    /* Negative margins extend the clickable area to cell edges while maintaining visual spacing */
     margin: -0.5em -0.75em;
     min-height: 24px;
     line-height: 1.5;
