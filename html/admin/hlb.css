@@ -46,10 +46,6 @@ span.navigation {
     color: #000;
 }
 
-.navigation > a:hover{
-    cursor: pointer;
-}
-
 .navigation.active{
     border-bottom-color: #1d7491;
     font-weight: bold;
