@@ -9,15 +9,22 @@
     <input type="hidden" name="id" value="{{ range.id|e('html') }}" />
     <div>
         Range begin:
-        <input size="3"  type="text" name="alphaStart"  value="{{ range.alphaStart|e('html') }}" />
-        <input size="12" type="text" name="numberStart" value="{{ range.numStart|e('html') }}" />
-        <input size="5"  type="text" name="cutterStart" value="{{ range.cutStart|e('html') }}" /><br />
+        <label for="alphaStart" class="visually-hidden">Alpha start</label>
+        <input size="3"  type="text" name="alphaStart" id="alphaStart" value="{{ range.alphaStart|e('html') }}" aria-label="Alpha start" />
+        <label for="numberStart" class="visually-hidden">Number start</label>
+        <input size="12" type="text" name="numberStart" id="numberStart" value="{{ range.numStart|e('html') }}" aria-label="Number start" />
+        <label for="cutterStart" class="visually-hidden">Cutter start</label>
+        <input size="5"  type="text" name="cutterStart" id="cutterStart" value="{{ range.cutStart|e('html') }}" aria-label="Cutter start" /><br />
         Range end:
-        <input size="3"  type="text" name="alphaEnd"  value="{{ range.alphaEnd|e('html') }}" />
-        <input size="12" type="text" name="numberEnd" value="{{ range.numEnd|e('html') }}" />
-        <input size="5"  type="text" name="cutterEnd" value="{{ range.cutEnd|e('html') }}" /><br />
+        <label for="alphaEnd" class="visually-hidden">Alpha end</label>
+        <input size="3"  type="text" name="alphaEnd" id="alphaEnd" value="{{ range.alphaEnd|e('html') }}" aria-label="Alpha end" />
+        <label for="numberEnd" class="visually-hidden">Number end</label>
+        <input size="12" type="text" name="numberEnd" id="numberEnd" value="{{ range.numEnd|e('html') }}" aria-label="Number end" />
+        <label for="cutterEnd" class="visually-hidden">Cutter end</label>
+        <input size="5"  type="text" name="cutterEnd" id="cutterEnd" value="{{ range.cutEnd|e('html') }}" aria-label="Cutter end" /><br />
         Range note:
-        <textarea name="notes">{{ range.notes|e('html') }}</textarea><br />
+        <label for="rangeNoteEdit" class="visually-hidden">Range note</label>
+        <textarea name="notes" id="rangeNoteEdit" aria-label="Range note">{{ range.notes|e('html') }}</textarea><br />
         <input type="submit" value="Update mapping" /><input type="reset" value="Reset form" />
     </div>
   </form>
