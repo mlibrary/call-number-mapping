@@ -2,23 +2,23 @@
 <div class="box">
   Use the form below to search for associated Library of Congress Call Numbers mapped to HLB Topic. Click the <strong>Search</strong> button when you are done.
 </div>
-<div class="box">
-  <span class="navigation active"> LC </span>
+<div class="box" role="navigation" aria-label="Search type">
+  <span class="navigation active" aria-current="page"> LC </span>
   <span class="navigation"> <a href="deweysearch.php">DEWEY</a> </span>
 </div>
 {% elseif dewey_active %}
 <div class="box">
   Use the form below to search for associated Dewey Call Numbers mapped to HLB Topic. Click the <strong>Search</strong> button when you are done.
 </div>
-<div class="box">
+<div class="box" role="navigation" aria-label="Search type">
   <span class="navigation"> <a href="lcsearch.php">LC</a> </span>
-  <span class="navigation active"> DEWEY </span>
+  <span class="navigation active" aria-current="page"> DEWEY </span>
 </div>
 {% else %}
 <div class="box">
   Use the form below to search for associated Library of Congress or Dewey Call Numbers mapped to HLB topic. Click the <strong>Search</strong> button when you are done.
 </div>
-<div class="box">
+<div class="box" role="navigation" aria-label="Search type">
   <span class="navigation"> <a href="lcsearch.php">LC</a> </span>
   <span class="navigation"> <a href="deweysearch.php">DEWEY</a> </span>
 </div>
