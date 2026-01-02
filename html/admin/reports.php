@@ -18,7 +18,7 @@ foreach (['id'] as $var) {
   }
 }
 
-$hlb->pageTitle('Browse & Map Library Browse Mappings');
+$hlb->pageTitle('Reports - Call Number Mapping');
 $hlb->setAuthenticated(!empty($_SERVER['REMOTE_USER']));
 
 $hlb->addContent('navigation', ['reports_active' => TRUE]);
