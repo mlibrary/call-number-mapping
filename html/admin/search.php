@@ -27,7 +27,7 @@ $search_params = [
   'options' => [ '<=', '>=', '=' ],
 ]; 
 
-$hlb->pageTitle('Search - Call Number Mapping');
+$hlb->pageTitle('Search', 'Call Number Mapping');
 $hlb->setAuthenticated(!empty($_SERVER['REMOTE_USER']));
 $hlb->addContent('navigation', ['search_active' => 'active']);
 $hlb->addContent('search-overview');
