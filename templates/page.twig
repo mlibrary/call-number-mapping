@@ -6,7 +6,7 @@
     <title>{{ title }} - {{ site }}</title>
     <!-- Place this in the <head> -->
     <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/umich-lib.css" rel="stylesheet"/>
-    <link href="hlb.css" rel="stylesheet"/>
+    <link href="/hlb.css" rel="stylesheet"/>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/dist/umich-lib/umich-lib.esm.js"></script>
   </head>
   <body>
@@ -32,5 +32,25 @@
         </div>
       {% endfor %}
     </main>
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About</h3>
+          <p>Call Number Mapping manages the mapping between call numbers and the 3-tier Academic Disciplines hierarchy.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>University of Michigan Library<br>
+          <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=1751&RequestorType=Service">Contact Us</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Accessibility</h3>
+          <p><a href="/accessibility.html">Accessibility Statement</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {{ "now"|date("Y") }} Regents of the University of Michigan</p>
+      </div>
+    </footer>
   </body>
 </html>
