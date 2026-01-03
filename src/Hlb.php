@@ -31,8 +31,9 @@ class Hlb {
     return $this;
   }
 
-  public function pageTitle($str) {
-    $this->values['page']['title'] = $str;
+  public function pageTitle($pageTitle, $siteTitle) {
+    $this->values['page']['site'] = $siteTitle;
+    $this->values['page']['title'] = $pageTitle;
     return $this;
   }
 

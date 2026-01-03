@@ -54,6 +54,11 @@ span.navigation {
     border-color: #1d7491;
 }
 
+.navigation.active{
+    border-bottom-color: #1d7491;
+    font-weight: bold;
+}
+
 span.browse_list {
     padding-left: .5em;
     padding-right: .5em;
@@ -204,6 +209,8 @@ table.assignments td, table.assignments th {
     font-size: 0.8em;
     padding-left: .5em;
     padding-right: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
     margin-left: .5em;
     margin-right: .5em;
     width: 7em;
@@ -230,4 +237,14 @@ td > a {
 
 .marginLeftHalf {
     margin-left: .5rem;
+}
+
+/* Ensure touch targets in search results meet WCAG 2.2 AA minimum of 24px */
+table.assignments td a {
+    display: inline-block;
+    padding: 0.5em 0.75em;
+    /* Negative margins extend the clickable area to cell edges while maintaining visual spacing */
+    margin: -0.5em -0.75em;
+    min-height: 24px;
+    line-height: 1.5;
 }

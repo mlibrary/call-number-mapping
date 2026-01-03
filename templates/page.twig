@@ -3,7 +3,7 @@
   <head>
     <!-- Docs: https://design-system.lib.umich.edu/reusable-designs/website-header/ -->
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>{{ title }} - {{ site }}</title>
     <!-- Place this in the <head> -->
     <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/umich-lib.css" rel="stylesheet"/>
     <link href="hlb.css" rel="stylesheet"/>
@@ -21,6 +21,7 @@
       </m-website-header>
     </div>
     <main class="viewport-container">
+      <h1>{{ title }}</h1>
       {% for section in content %}
       <div class="section">
         {{ section }}

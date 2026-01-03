@@ -18,7 +18,7 @@ foreach (['id', 'search', 'message'] as $var) {
   }
 }
 
-$hlb->pageTitle('Browse & Map Library Browse Mappings');
+$hlb->pageTitle('Modify Topics', 'Call Number Mapping');
 $hlb->setAuthenticated(!empty($_SERVER['REMOTE_USER']));
 $hlb->addContent('navigation', ['modify_active' => true]);
 $hlb->addContent('message', ['message' => $message]);

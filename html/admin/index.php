@@ -18,7 +18,7 @@ foreach (['narrow'] as $var) {
   }
 }
 
-$hlb->pageTitle('Browse & Map Library Browse Mappings');
+$hlb->pageTitle('Browse and Map', 'Call Number Mapping');
 $hlb->setAuthenticated(!empty($_SERVER['REMOTE_USER']));
 $hlb->addContent('navigation', ['browse_active' => 'active']);
 $hlb->addContent('search', $hlb->getSearchParams($narrow));
