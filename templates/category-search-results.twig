@@ -27,7 +27,7 @@
             <form action="deletetopic.php" method="post" onsubmit="return confirm('Really delete topic: {{ topic.name|e('html') }} with {{ topic.count|e('html') }} mappings?')">
               <input type="hidden" name="id" value="{{ topic.id|e('html') }}" />
               <input type="hidden" name="search" value="{{ search|e('html') }}" />
-              <input type="submit" value="Delete">
+              <input type="submit" value="Delete topic: {{ topic.name|e('html') }}" />
             </form>
           </td>
         </tr>

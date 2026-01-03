@@ -7,8 +7,8 @@
 </div>
 <br/>
 <form method="post" action="add.php">
-	<input type="radio" name="type" value="lc" checked/>Library of Congress
-	<input type="radio" name="type" value="dewey"/>Dewey
+	<label><input type="radio" name="type" value="lc" checked/> Library of Congress</label>
+	<label><input type="radio" name="type" value="dewey"/> Dewey</label>
 	<input type="hidden" value="{{ topic.id|e('html') }}" name="id"/>
 	<div>
 		<div class="clear">
@@ -81,7 +81,7 @@
 				</tr>
 				{% for assignment in lc %}
 					<tr>
-						<td class="dark"><input type="checkbox" name="lc[]" value="{{ assignment.id|e('html') }}"/></td>
+						<td class="dark"><input type="checkbox" name="lc[]" value="{{ assignment.id|e('html') }}" aria-label="Select LC range {{ assignment.alphaStart|e('html') }} {{ assignment.numStart|e('html') }} {{ assignment.cutStart|e('html') }} to {{ assignment.alphaEnd|e('html') }} {{ assignment.numEnd|e('html') }} {{ assignment.cutEnd|e('html') }}"/></td>
 						<td class="light">
 							{{ assignment.alphaStart|e('html') }}
 							{{ assignment.numStart|e('html') }}
@@ -105,7 +105,7 @@
 				{% endfor %}
 				{%for assignment in dewey %}
 					<tr>
-						<td class="dark"><input type="checkbox" name="dewey[]" value="{{ assignment.id|e('html') }}"/></td>
+						<td class="dark"><input type="checkbox" name="dewey[]" value="{{ assignment.id|e('html') }}" aria-label="Select Dewey range {{ assignment.numStart|e('html') }} to {{ assignment.numEnd|e('html') }}"/></td>
 						<td class="light">
 							{{ assignment.numStart|e('html') }}
 						</td>
@@ -124,7 +124,8 @@
 					</tr>
 				{% endfor %}
 			</table>
-			<select name="{{ select.name|e('html') }}">
+			<label for="copyToTopic">Copy to topic</label>
+			<select name="{{ select.name|e('html') }}" id="copyToTopic" aria-label="Copy to topic">
 				{% for option in select.options %}
 					<option value="{{ option.id|e('html') }}" {% if option.id == select.selected %} selected="true" {% endif %}>{{ option.name|e('html') }}</option>
 				{% endfor %}

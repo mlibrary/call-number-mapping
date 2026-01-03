@@ -87,12 +87,15 @@ ORDER BY trim(hlb3_topic.name)";
     if (empty($results)) {
       return '';
     }
-    
+
+    $parent_name = $this->getTopicNameById($id);
+
     $str = '<ul>';
     foreach ($results as $r) {
+      $submit_str = "Unlink '" . htmlentities($r['name']) . "' from '" . htmlentities($parent_name) . "'";
       $str .= '<li>' ;
-      $str .=  '<a href="index.php?narrow=' . htmlentities($r['id']) . '">' . htmlentities($r['name']) . '</a>'; 
-      $str .= '<form style="display: inline;" action="removeassociation.php" method="post"><input type="hidden" value="'.htmlentities($id).'" name="parent"><input type="hidden" value="'.htmlentities($r['id']).'" name="child"><input type="submit" class="marginLeftHalf" value="Remove this association"></form>';
+      $str .=  '<a href="index.php?narrow=' . htmlentities($r['id']) . '">' . htmlentities($r['name']) . '</a>';
+      $str .= '<form style="display: inline;" action="removeassociation.php" method="post"><input type="hidden" value="'.htmlentities($id).'" name="parent"><input type="hidden" value="'.htmlentities($r['id']).'" name="child"><input type="submit" class="marginLeftHalf marginBottomHalf" value="' . $submit_str . '"></form>';
       if (array_search($r['id'],$list) === FALSE) {
         $str .= $this->subtree($r['id'], array_merge($list, array($r['id'])));
       } else {
@@ -106,7 +109,7 @@ ORDER BY trim(hlb3_topic.name)";
 
   public function export($id) {
     $sql = "
-SELECT 
+SELECT
   hlb3_topic.name,
   hlb3_lc.alphaStart,
   hlb3_lc.numStart,
@@ -121,7 +124,7 @@ FROM
   hlb3_lc ON hlb3_lcMap.lc= hlb3_lc.id
 WHERE
   :id = 0 OR hlb3_topic.id = :id
-ORDER BY 
+ORDER BY
   hlb3_topic.name,
   hlb3_lc.alphaStart,
   hlb3_lc.numStart,
@@ -139,25 +142,25 @@ ORDER BY
 
   public function getCategorySearchResults($search) {
     $search_sql = "
-SELECT 
+SELECT
   id,
   name,
   c1+c2 AS count
-FROM 
-  (SELECT 
+FROM
+  (SELECT
      hlb3_topic.id,
      hlb3_topic.name,
      count(hlb3_lcMap.lc) as c1,
-     count(hlb3_deweyMap.dewey) as c2 
-   FROM 
-     hlb3_topic LEFT JOIN 
-     hlb3_lcMap ON hlb3_topic.id=hlb3_lcMap.topic LEFT JOIN 
-     hlb3_deweyMap ON hlb3_topic.id=hlb3_deweyMap.topic 
-   GROUP BY 
+     count(hlb3_deweyMap.dewey) as c2
+   FROM
+     hlb3_topic LEFT JOIN
+     hlb3_lcMap ON hlb3_topic.id=hlb3_lcMap.topic LEFT JOIN
+     hlb3_deweyMap ON hlb3_topic.id=hlb3_deweyMap.topic
+   GROUP BY
      hlb3_topic.id) t1
 WHERE
   name LIKE :search
-ORDER BY 
+ORDER BY
   name
 ";
     $parents_sql = "
@@ -276,7 +279,7 @@ ORDER by name
   public function copy($type, $target, $mapping) {
     if($type == 'lc') {
       $sql = "
-INSERT INTO hlb3_lc (alphaStart, numStart, cutStart, alphaEnd, numEnd, cutEnd, notes) 
+INSERT INTO hlb3_lc (alphaStart, numStart, cutStart, alphaEnd, numEnd, cutEnd, notes)
 SELECT alphaStart, numStart, cutStart, alphaEnd, numEnd, cutEnd, notes
 FROM hlb3_lc
 WHERE id = :id";
@@ -297,15 +300,15 @@ WHERE id = :id";
 
   public function getLCAssignmentsByTopicId($id) {
     $sql = "
-SELECT 
-  id, 
+SELECT
+  id,
   alphaStart, numStart, cutStart,
   alphaEnd, numEnd, cutEnd,
-  notes 
+  notes
 FROM
   hlb3_lc
-JOIN 
-  hlb3_lcMap ON lc=id 
+JOIN
+  hlb3_lcMap ON lc=id
 WHERE
   topic = :id
 order by
@@ -316,12 +319,12 @@ order by
 
   public function getDeweyAssignmentsByTopicId($id) {
     $sql = "
-SELECT 
-  id, numStart, numEnd, notes 
+SELECT
+  id, numStart, numEnd, notes
 FROM
   hlb3_dewey
-JOIN 
-  hlb3_deweyMap on dewey=id 
+JOIN
+  hlb3_deweyMap on dewey=id
 WHERE
   topic = :id
 ORDER BY
@@ -379,7 +382,7 @@ ORDER BY
     $sql = "
 UPDATE
   hlb3_lc
-SET 
+SET
   alphaStart = :alphaStart,
   numStart = :numStart,
   cutStart = :cutStart,
@@ -390,7 +393,7 @@ SET
 WHERE
   id = :id";
     $params = [
-      ":id" => $id, 
+      ":id" => $id,
       ":alphaStart" => $alphaStart,
       ":numStart" => $numStart,
       ":cutStart" => $cutStart,
@@ -407,7 +410,7 @@ WHERE
     $sql = "
 UPDATE
   hlb3_dewey
-SET 
+SET
   numStart = :numStart,
   numEnd = :numEnd,
   notes = :notes
@@ -430,7 +433,7 @@ WHERE
     if (!isset($numEnd) || is_null($numEnd) || strlen($numEnd) == 0) {
       $numEnd = 9999.999;
     }
-    
+
     if($type == 'lc') {
       $this->addLc($topicId, $alphaStart, $numStart, $cutStart, $alphaEnd, $numEnd, $cutEnd, $notes);
     } elseif ($type == 'dewey') {
@@ -443,7 +446,7 @@ WHERE
     $sql = "
 INSERT INTO
   hlb3_lc
-SET 
+SET
   alphaStart = :alphaStart,
   numStart = :numStart,
   cutStart = :cutStart,
@@ -477,7 +480,7 @@ SET
   notes = :notes";
     $parameters = [':numStart' => $numStart, ':numEnd' => $numEnd, ':notes' => $notes];
     $deweyId = $this->db->insertSQL($sql, $parameters);
-    
+
     $sql = 'INSERT INTO hlb3_deweyMap SET dewey = :deweyId, topic = :topicId';
     $this->db->getSQL($sql, [':deweyId' => $deweyId, ':topicId' => $topicId]);
     return $this;
@@ -526,7 +529,7 @@ WHERE id = :id
 ORDER BY
    alphaStart, numStart, cutStart, alphaEnd, numEnd, cutEnd, notes";
     $topicSql = "
-SELECT name, id 
+SELECT name, id
 FROM hlb3_topic
 JOIN hlb3_lcMap ON hlb3_topic.id = hlb3_lcMap.topic
 WHERE hlb3_lcMap.lc = :id
@@ -560,7 +563,7 @@ ORDER BY name";
 
   public function getDeweySearchResults($params) {
     $sql = "
-SELECT 
+SELECT
   hlb3_topic.id,
   hlb3_topic.name,
   hlb3_dewey.numStart,
@@ -597,7 +600,7 @@ WHERE
 
   public function getLcSearchResults($params) {
     $sql = "
-SELECT 
+SELECT
   hlb3_topic.id,
   hlb3_topic.name,
   hlb3_lc.alphaStart,
@@ -607,8 +610,8 @@ SELECT
   hlb3_lc.numEnd,
   hlb3_lc.cutEnd,
   hlb3_lc.notes
-FROM 
-  hlb3_topic LEFT JOIN 
+FROM
+  hlb3_topic LEFT JOIN
   hlb3_lcMap on hlb3_topic.id=hlb3_lcMap.topic LEFT JOIN
   hlb3_lc on hlb3_lcMap.lc=hlb3_lc.id
 WHERE
@@ -649,7 +652,7 @@ WHERE
         $sql .= " AND (hlb3_lc.alphaEnd > :alpha OR hlb3_lc.cutEnd >= :cut ) ";
       }
       elseif ($params['cut_op'] == '=') {
-        $sql .= " AND ((hlb3_lc.cutStart IS NULL OR hlb3_lc.alphaStart < :alpha OR hlb3_lc.cutStart <= :cut) AND 
+        $sql .= " AND ((hlb3_lc.cutStart IS NULL OR hlb3_lc.alphaStart < :alpha OR hlb3_lc.cutStart <= :cut) AND
                        (hlb3_lc.cutEnd IS NULL OR hlb3_lc.alphaEnd > :alpha OR hlb3_lc.cutEnd >= :cut)) ";
       }
     }
@@ -662,4 +665,4 @@ WHERE
     ];
   }
 }
-    
+

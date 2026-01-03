@@ -8,17 +8,55 @@
     <input type="hidden" name="narrow" value="{{ topic.id|e('html') }}" />
     <input type="hidden" name="id" value="{{ range.id|e('html') }}" />
     <div>
-        Range begin:
-        <input size="3"  type="text" name="alphaStart"  value="{{ range.alphaStart|e('html') }}" />
-        <input size="12" type="text" name="numberStart" value="{{ range.numStart|e('html') }}" />
-        <input size="5"  type="text" name="cutterStart" value="{{ range.cutStart|e('html') }}" /><br />
-        Range end:
-        <input size="3"  type="text" name="alphaEnd"  value="{{ range.alphaEnd|e('html') }}" />
-        <input size="12" type="text" name="numberEnd" value="{{ range.numEnd|e('html') }}" />
-        <input size="5"  type="text" name="cutterEnd" value="{{ range.cutEnd|e('html') }}" /><br />
-        Range note:
-        <textarea name="notes">{{ range.notes|e('html') }}</textarea><br />
-        <input type="submit" value="Update mapping" /><input type="reset" value="Reset form" />
+      <div class="clear">
+        <fieldset>
+          <legend>Range begin:</legend>
+          {% if type != 'dewey' %}
+          <div class="column">
+            <label for="alphaStart">Alpha</label>
+            <input size="3"  type="text" name="alphaStart" id="alphaStart" value="{{ range.alphaStart|e('html') }}" aria-label="Alpha start" />
+          </div>
+          {% endif %}
+          <div class="mediumcolumn">
+            <label for="numberStart">Number</label>
+            <input size="12" type="text" name="numberStart" id="numberStart" value="{{ range.numStart|e('html') }}" aria-label="Number start" />
+          </div>
+          {% if type != 'dewey' %}
+          <div class="column">
+            <label for="cutterStart">Cutter</label>
+            <input size="5"  type="text" name="cutterStart" id="cutterStart" value="{{ range.cutStart|e('html') }}" aria-label="Cutter start" /><br />
+          </div>
+          {% endif %}
+        </fieldset>
+      </div>
+      <div class="clear">
+        <fieldset>
+          <legend>Range end:</legend>
+          {% if type != 'dewey' %}
+          <div class="column">
+            <label for="alphaEnd">Alpha</label>
+            <input size="3"  type="text" name="alphaEnd" id="alphaEnd" value="{{ range.alphaEnd|e('html') }}" aria-label="Alpha end" />
+          </div>
+          {% endif %}
+          <div class="mediumcolumn">
+            <label for="numberEnd">Number</label>
+            <input size="12" type="text" name="numberEnd" id="numberEnd" value="{{ range.numEnd|e('html') }}" aria-label="Number end" />
+          </div>
+          {% if type != 'dewey' %}
+          <div class="column">
+            <label for="cutterEnd">Cutter</label>
+            <input size="5"  type="text" name="cutterEnd" id="cutterEnd" value="{{ range.cutEnd|e('html') }}" aria-label="Cutter end" />
+          </div>
+          {% endif %}
+        </fieldset>
+      </div>
+      <div class="clear">
+        <label for="rangeNoteEdit">Range note:</label><br/>
+        <textarea name="notes" id="rangeNoteEdit" aria-label="Range note" cols="80" rows="5">{{ range.notes|e('html') }}</textarea>
+      </div>
+      <br/>
+      <input type="submit" value="Update mapping" />
+      <input type="reset" value="Reset form" />
     </div>
   </form>
 </div>

@@ -14,15 +14,15 @@
 div.mediumcolumn {
     width: 10em;
     float: left;
-} 
+}
 div.widecolumn {
     width: 20em;
     float: left;
-} 
+}
 div.column {
     width: 5em;
     float: left;
-} 
+}
 div.clear {
     clear: both;
 }
@@ -37,13 +37,21 @@ span.navigation {
     display: inline-block;
 }
 
-.navigation{
+.navigation {
     border-bottom: 3px solid rgba(0,0,0,0);
 }
 
-.navigation > a{
+.navigation > a {
     text-decoration: none;
     color: #000;
+}
+
+.active {
+    border-color: #1d7491;
+}
+
+.navigation:hover {
+    border-color: #1d7491;
 }
 
 .navigation.active{
@@ -51,13 +59,9 @@ span.navigation {
     font-weight: bold;
 }
 
-.navigation:hover{
-    border-bottom-color: #1d7491;
-}
-
 span.browse_list {
     padding-left: .5em;
-    padding-right: .5em; 
+    padding-right: .5em;
     margin: 0px;
     border-left: 1px black solid;
     margin-left: 0px;
@@ -131,7 +135,7 @@ div.right {
     margin-top: 0px;
     vertical-align: top;
     /*border: solid black 1px;  */
-    margin-left:  50%; 
+    margin-left:  50%;
     margin-right:0px;
     width:50%;
 }
@@ -173,7 +177,7 @@ ul.issn {
     padding: 0px !important;
 }
 ul.issn li {
-    margin-left: 0px !important; 
+    margin-left: 0px !important;
     padding: 0px !important;
     display: inline;
 }
@@ -195,7 +199,7 @@ li.auth {
     border: none;
     background-color: #eee;
     text-decoration: none;
-    color: black;   
+    color: black;
 }
 
 table.assignments {
@@ -223,8 +227,16 @@ table.assignments td.wide, table.assignments th.wide {
     background-color: #ddd;
 }
 
-td > a{
+td > a {
     color: #106684;
+}
+
+.marginBottomHalf {
+    margin-bottom: .5rem;
+}
+
+.marginLeftHalf {
+    margin-left: .5rem;
 }
 
 /* Ensure touch targets in search results meet WCAG 2.2 AA minimum of 24px */
@@ -235,8 +247,4 @@ table.assignments td a {
     margin: -0.5em -0.75em;
     min-height: 24px;
     line-height: 1.5;
-}
-
-.marginLeftHalf{
-    margin-left: .5rem;
 }

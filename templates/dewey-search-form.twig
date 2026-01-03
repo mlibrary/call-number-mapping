@@ -4,7 +4,7 @@
     <div class="clear">
       <div class="column"> <label for="DeweyNumber">+Number:</label> </div>
       <div class="column">
-        <select name="num_op">
+        <select name="num_op" aria-label="comparison operator">
           {% for option in options %}
             <option {% if option == num_op %} selected="selected"{% endif %}>{{ option|e('html') }}</option>
           {% endfor %}
