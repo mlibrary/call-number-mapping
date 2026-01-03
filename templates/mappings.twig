@@ -124,8 +124,8 @@
 					</tr>
 				{% endfor %}
 			</table>
-			<label for="copyToTopic">Copy to topic</label>
-			<select name="{{ select.name|e('html') }}" id="copyToTopic" aria-label="Copy to topic">
+			<label for="copyToTopic">Destination topic for copying ranges</label>
+			<select name="{{ select.name|e('html') }}" id="copyToTopic" aria-label="Destination topic for copying ranges">
 				{% for option in select.options %}
 					<option value="{{ option.id|e('html') }}" {% if option.id == select.selected %} selected="true" {% endif %}>{{ option.name|e('html') }}</option>
 				{% endfor %}
