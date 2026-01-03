@@ -14,15 +14,15 @@
 div.mediumcolumn {
     width: 10em;
     float: left;
-} 
+}
 div.widecolumn {
     width: 20em;
     float: left;
-} 
+}
 div.column {
     width: 5em;
     float: left;
-} 
+}
 div.clear {
     clear: both;
 }
@@ -37,26 +37,26 @@ span.navigation {
     display: inline-block;
 }
 
-.navigation{
+.navigation {
     border-bottom: 3px solid rgba(0,0,0,0);
 }
 
-.navigation > a{
+.navigation > a {
     text-decoration: none;
     color: #000;
 }
 
-.active{
+.active {
     border-color: #1d7491;
 }
 
-.navigation:hover{
+.navigation:hover {
     border-color: #1d7491;
 }
 
 span.browse_list {
     padding-left: .5em;
-    padding-right: .5em; 
+    padding-right: .5em;
     margin: 0px;
     border-left: 1px black solid;
     margin-left: 0px;
@@ -130,7 +130,7 @@ div.right {
     margin-top: 0px;
     vertical-align: top;
     /*border: solid black 1px;  */
-    margin-left:  50%; 
+    margin-left:  50%;
     margin-right:0px;
     width:50%;
 }
@@ -172,7 +172,7 @@ ul.issn {
     padding: 0px !important;
 }
 ul.issn li {
-    margin-left: 0px !important; 
+    margin-left: 0px !important;
     padding: 0px !important;
     display: inline;
 }
@@ -194,7 +194,7 @@ li.auth {
     border: none;
     background-color: #eee;
     text-decoration: none;
-    color: black;   
+    color: black;
 }
 
 table.assignments {
@@ -220,22 +220,14 @@ table.assignments td.wide, table.assignments th.wide {
     background-color: #ddd;
 }
 
-td > a{
+td > a {
     color: #106684;
 }
 
-.marginLeftHalf{
-    margin-left: .5rem;
+.marginBottomHalf {
+    margin-bottom: .5rem;
 }
 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+.marginLeftHalf {
+    margin-left: .5rem;
 }

@@ -124,7 +124,7 @@
 					</tr>
 				{% endfor %}
 			</table>
-			<label for="copyToTopic" class="visually-hidden">Copy to topic</label>
+			<label for="copyToTopic">Copy to topic</label>
 			<select name="{{ select.name|e('html') }}" id="copyToTopic" aria-label="Copy to topic">
 				{% for option in select.options %}
 					<option value="{{ option.id|e('html') }}" {% if option.id == select.selected %} selected="true" {% endif %}>{{ option.name|e('html') }}</option>
