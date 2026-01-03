@@ -248,3 +248,134 @@ table.assignments td a {
     min-height: 24px;
     line-height: 1.5;
 }
+
+/* Footer styles */
+.site-footer {
+    background-color: #00274c;
+    color: #ffffff;
+    padding: 2rem 1rem 1rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.footer-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0.5rem 0;
+}
+
+.footer-section a {
+    color: #a6cee3;
+    text-decoration: underline;
+}
+
+.footer-section a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 1.5rem auto 0;
+    padding: 1rem 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* Responsive improvements for select elements and other form controls */
+select {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Fix overflow issues with column-based layouts on smaller viewports */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    .footer-section {
+        width: 100%;
+    }
+    
+    div.column,
+    div.mediumcolumn,
+    div.widecolumn {
+        float: none;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    div.lastcolumn {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    div.left,
+    div.right {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    select {
+        width: 100%;
+    }
+    
+    textarea {
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Enable horizontal scrolling for wide tables on mobile */
+    .box {
+        overflow-x: auto;
+    }
+    
+    table.assignments td,
+    table.assignments th {
+        white-space: normal;
+        word-wrap: break-word;
+    }
+}
+
+/* Additional responsive fixes for zoomed in views */
+@media (max-width: 480px) {
+    .box {
+        margin: 1em 0.5em;
+        padding: 0.75em;
+    }
+    
+    input[type="text"],
+    input[type="submit"],
+    input[type="reset"] {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
