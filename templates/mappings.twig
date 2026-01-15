@@ -112,7 +112,7 @@
 				</tr>
 			{% endfor %}
 			{% for assignment in dewey %}
-        {% set range_label = 'range ' ~ assignment.id ~ ' (' ~ assignment.numStart ~ ' to ' ~ assignment.numEnd ~ ')' %}
+        {% set range_label = 'range ' ~ assignment.numStart ~ ' to ' ~ assignment.numEnd %}
 				<tr>
 					<td class="dark"><input type="checkbox" name="dewey[]" value="{{ assignment.id|e('html') }}" aria-label="Select Dewey {{ range_label|e('html') }}"/></td>
 					<td class="light">
