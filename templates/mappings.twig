@@ -68,62 +68,82 @@
 		To copy one or more ranges to another topic, select each range and click the "<strong>copy selected ranges</strong>" button below.
 	</div>
 	<div>
-		<form action="copy.php" method="post">
-			<input type="hidden" value="{{ topic.id|e('html') }}" name="id"/>
-			<table class="assignments">
+		<table class="assignments">
+			<tr>
+				<th class="dark">Select</th>
+				<th class="light">Range Begin</th>
+				<th class="light">Range End</th>
+				<th class="dark">Notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<th class="light"></th>
+				<th class="light"></th>
+			</tr>
+			{% for assignment in lc %}
+          {% set range_label = 'range ' ~ assignment.alphaStart ~ ' ' ~ assignment.numStart ~ ' ' ~ assignment.cutStart ~ ' to ' ~ assignment.alphaEnd ~ ' ' ~ assignment.numEnd ~ ' ' ~ assignment.cutEnd %}
 				<tr>
-					<th class="dark">Select</th>
-					<th class="light">Range Begin</th>
-					<th class="light">Range End</th>
-					<th class="dark">Notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th class="light"></th>
-					<th class="light"></th>
+					<td class="dark"><input type="checkbox" name="lc[]" value="{{ assignment.id|e('html') }}" aria-label="Select LC {{ range_label|e('html') }}"/></td>
+					<td class="light">
+						{{ assignment.alphaStart|e('html') }}
+						{{ assignment.numStart|e('html') }}
+						{{ assignment.cutStart|e('html') }}
+					</td>
+					<td class="light">
+						{{ assignment.alphaEnd|e('html') }}
+						{{ assignment.numEnd|e('html') }}
+						{{ assignment.cutEnd|e('html') }}
+					</td>
+					<td class="dark">
+						{{ assignment.notes|e('html') }}
+					</td>
+					<td class="light">
+            <form action="edit.php" method="GET">
+              <input type="hidden" name="id" value="{{ assignment.id|e('html') }}"/>
+              <input type="hidden" name="type" value="lc"/>
+              <input type="submit" value="Edit {{ range_label|e('html') }}"/>
+            </form>
+					</td>
+					<td class="light">
+            <form action="delete.php" method="POST">
+              <input type="hidden" name="id" value="{{ assignment.id|e('html') }}"/>
+              <input type="hidden" name="type" value="lc"/>
+              <input type="hidden" name="narrow" value="{{ topic.id|e('html') }}"/>
+              <input type="submit" value="Delete {{ range_label|e('html') }}"/>
+            </form>
+					</td>
 				</tr>
-				{% for assignment in lc %}
-					<tr>
-						<td class="dark"><input type="checkbox" name="lc[]" value="{{ assignment.id|e('html') }}" aria-label="Select LC range {{ assignment.alphaStart|e('html') }} {{ assignment.numStart|e('html') }} {{ assignment.cutStart|e('html') }} to {{ assignment.alphaEnd|e('html') }} {{ assignment.numEnd|e('html') }} {{ assignment.cutEnd|e('html') }}"/></td>
-						<td class="light">
-							{{ assignment.alphaStart|e('html') }}
-							{{ assignment.numStart|e('html') }}
-							{{ assignment.cutStart|e('html') }}
-						</td>
-						<td class="light">
-							{{ assignment.alphaEnd|e('html') }}
-							{{ assignment.numEnd|e('html') }}
-							{{ assignment.cutEnd|e('html') }}
-						</td>
-						<td class="dark">
-							{{ assignment.notes|e('html') }}
-						</td>
-						<td class="light">
-							<a href="edit.php?id={{ assignment.id|e('html') }}&type=lc" target="_blank">EDIT</a>
-						</td>
-						<td class="light">
-							<a href="delete.php?id={{ assignment.id|e('html') }}&type=lc&narrow={{ topic.id|e('html') }}">DELETE</a>
-						</td>
-					</tr>
-				{% endfor %}
-				{%for assignment in dewey %}
-					<tr>
-						<td class="dark"><input type="checkbox" name="dewey[]" value="{{ assignment.id|e('html') }}" aria-label="Select Dewey range {{ assignment.numStart|e('html') }} to {{ assignment.numEnd|e('html') }}"/></td>
-						<td class="light">
-							{{ assignment.numStart|e('html') }}
-						</td>
-						<td class="light">
-							{{ assignment.numEnd|e('html') }}
-						</td>
-						<td class="dark">
-							{{ assignment.notes|e('html') }}
-						</td>
-						<td class="light">
-							<a href="edit.php?id={{ assignment.id|e('html') }}&type=dewey" target="_blank">EDIT</a>
-						</td>
-						<td class="light">
-							<a href="delete.php?id={{ assignment.id|e('html') }}&type=dewey&narrow={{ topic.id|e('html') }}">DELETE</a>
-						</td>
-					</tr>
-				{% endfor %}
-			</table>
+			{% endfor %}
+			{% for assignment in dewey %}
+        {% set range_label = 'range ' ~ assignment.numStart ~ ' to ' ~ assignment.numEnd %}
+				<tr>
+					<td class="dark"><input type="checkbox" name="dewey[]" value="{{ assignment.id|e('html') }}" aria-label="Select Dewey {{ range_label|e('html') }}"/></td>
+					<td class="light">
+						{{ assignment.numStart|e('html') }}
+					</td>
+					<td class="light">
+						{{ assignment.numEnd|e('html') }}
+					</td>
+					<td class="dark">
+						{{ assignment.notes|e('html') }}
+					</td>
+					<td class="light">
+            <form action="edit.php" method="GET">
+              <input type="hidden" name="id" value="{{ assignment.id|e('html') }}"/>
+              <input type="hidden" name="type" value="dewey"/>
+              <input type="submit" value="Edit {{ range_label|e('html') }}"/>
+            </form>
+					</td>
+					<td class="light">
+            <form action="delete.php" method="POST">
+              <input type="hidden" name="id" value="{{ assignment.id|e('html') }}"/>
+              <input type="hidden" name="type" value="dewey"/>
+              <input type="hidden" name="narrow" value="{{ topic.id|e('html') }}"/>
+              <input type="submit" value="Delete {{ range_label|e('html') }}"/>
+            </form>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<form action="copy.php" method="post" id="copy_form">
+			<input type="hidden" value="{{ topic.id|e('html') }}" name="id"/>
 			<label for="copyToTopic">Destination topic for copying ranges</label>
 			<select name="{{ select.name|e('html') }}" id="copyToTopic" aria-label="Destination topic for copying ranges">
 				{% for option in select.options %}
@@ -135,3 +155,28 @@
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+const form = document.getElementById('copy_form');
+async function sendData() {
+  let formData = new FormData(form);
+  const inputs = document.querySelectorAll('table.assignments input[type="checkbox"]');
+  for (const input of inputs) {
+    if (input.checked) {
+      formData.append(input.name, input.value);
+    }
+  }
+  try {
+    const response = await fetch("copy.php", {
+      method: "POST",
+      body: formData
+    });
+    document.location.href = response.url;
+  } catch(e) {
+    console.error(e);
+  }
+}
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  sendData();
+});
+</script>

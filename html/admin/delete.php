@@ -9,9 +9,6 @@ foreach ( $vars as $var ) {
   if (isset($_POST[$var])) {
     $$var = $_POST[$var];
   }
-  elseif (isset($_GET[$var])) {
-    $$var = $_GET[$var];
-  }
   else {
     $$var = NULL;
   }
