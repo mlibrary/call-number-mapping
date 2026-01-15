@@ -160,9 +160,9 @@ const form = document.getElementById('copy_form');
 async function sendData() {
   let formData = new FormData(form);
   const inputs = document.querySelectorAll('table.assignments input[type="checkbox"]');
-  for (let i = 0; i < inputs.length; ++i) {
-    if (inputs[i].checked) {
-      formData.append(inputs[i].name, inputs[i].value);
+  for (const input of inputs) {
+    if (input.checked) {
+      formData.append(input.name, input.value);
     }
   }
   try {
