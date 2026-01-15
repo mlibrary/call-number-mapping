@@ -158,9 +158,9 @@
 <script type="text/javascript">
 const form = document.getElementById('copy_form');
 async function sendData() {
-  var formData = new FormData(form);
+  let formData = new FormData(form);
   const inputs = document.querySelectorAll('table.assignments input[type="checkbox"]');
-  for (var i = 0; i < inputs.length; ++i) {
+  for (let i = 0; i < inputs.length; ++i) {
     if (inputs[i].checked) {
       formData.append(inputs[i].name, inputs[i].value);
     }
