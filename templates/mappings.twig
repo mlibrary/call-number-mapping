@@ -125,10 +125,19 @@
 						{{ assignment.notes|e('html') }}
 					</td>
 					<td class="light">
-						<a href="edit.php?id={{ assignment.id|e('html') }}&type=dewey" target="_blank">EDIT {{ range_label|e('html') }}</a>
+            <form action="edit.php" method="GET">
+              <input type="hidden" name="id" value="{{ assignment.id|e('html') }}"/>
+              <input type="hidden" name="type" value="dewey"/>
+              <input type="submit" value="Edit {{ range_label|e('html') }}"/>
+            </form>
 					</td>
 					<td class="light">
-						<a href="delete.php?id={{ assignment.id|e('html') }}&type=dewey&narrow={{ topic.id|e('html') }}">DELETE {{ range_label|e('html') }}</a>
+            <form action="delete.php" method="POST">
+              <input type="hidden" name="id" value="{{ assignment.id|e('html') }}"/>
+              <input type="hidden" name="type" value="dewey"/>
+              <input type="hidden" name="narrow" value="{{ topic.id|e('html') }}"/>
+              <input type="submit" value="Delete {{ range_label|e('html') }}"/>
+            </form>
 					</td>
 				</tr>
 			{% endfor %}
