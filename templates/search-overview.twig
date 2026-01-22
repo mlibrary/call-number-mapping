@@ -3,23 +3,29 @@
   Use the form below to search for associated Library of Congress Call Numbers mapped to HLB Topic. Click the <strong>Search</strong> button when you are done.
 </div>
 <div class="box" role="navigation" aria-label="Search type">
-  <span class="navigation active" aria-current="page"> LC </span>
-  <span class="navigation"> <a href="deweysearch.php">DEWEY</a> </span>
+  <h2>Choose Call Number System</h2>
+  <p>Select which call number system to search:</p>
+  <span class="navigation active"><a href="lcsearch.php" aria-current="page">Library of Congress</a></span>
+  <span class="navigation"> <a href="deweysearch.php">Dewey Decimal</a> </span>
 </div>
 {% elseif dewey_active %}
 <div class="box">
   Use the form below to search for associated Dewey Call Numbers mapped to HLB Topic. Click the <strong>Search</strong> button when you are done.
 </div>
 <div class="box" role="navigation" aria-label="Search type">
-  <span class="navigation"> <a href="lcsearch.php">LC</a> </span>
-  <span class="navigation active" aria-current="page"> DEWEY </span>
+  <h2>Choose Call Number System</h2>
+  <p>Select which call number system to search:</p>
+  <span class="navigation"> <a href="lcsearch.php">Library of Congress</a> </span>
+  <span class="navigation active"><a href="deweysearch.php" aria-current="page">Dewey Decimal</a></span>
 </div>
 {% else %}
 <div class="box">
   Use the form below to search for associated Library of Congress or Dewey Call Numbers mapped to HLB topic. Click the <strong>Search</strong> button when you are done.
 </div>
 <div class="box" role="navigation" aria-label="Search type">
-  <span class="navigation"> <a href="lcsearch.php">LC</a> </span>
-  <span class="navigation"> <a href="deweysearch.php">DEWEY</a> </span>
+  <h2>Choose Call Number System</h2>
+  <p>Select which call number system to search:</p>
+  <span class="navigation active"><a href="lcsearch.php" aria-current="page">Library of Congress</a></span>
+  <span class="navigation "> <a href="deweysearch.php">Dewey Decimal</a> </span>
 </div>
 {% endif %}
