@@ -3,6 +3,8 @@ services:
   web:
     build:
       context: .
+    environment:
+    - LDAP_UPDATE_USER=${USER}
     env_file:
     - .env
     volumes:

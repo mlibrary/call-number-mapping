@@ -1,10 +1,10 @@
 #!/bin/bash
 
-TMPFILE=$(mktemp -p /tmp "update.ldif.XXXXXXXX")
-
-username="$1"
-directory_file="https://cms.lib.umich.edu/api/solr/staff"
-ldap_host="ldaps://ldap.umich.edu"
+if [ x"$1" != x"" ] ; then
+  username="$1"
+else
+  username="$LDAP_UPDATE_USER"
+fi
 
 if [ x"$username" = x"" ] ; then
   echo "usage: $0 <username>"
@@ -12,6 +12,12 @@ if [ x"$username" = x"" ] ; then
   echo "<username> is your uniqname"
   exit 1
 fi
+
+directory_file="https://cms.lib.umich.edu/api/solr/staff"
+ldap_host="ldaps://ldap.umich.edu"
+
+TMPFILE=$(mktemp -p /tmp "update.ldif.XXXXXXXX")
+trap "rm -f ${TMPFILE}" EXIT
 
 cat > ${TMPFILE} <<EOF
 dn: cn=ulib-dnd-cnm-admin,ou=User Groups,ou=Groups,dc=umich,dc=edu
@@ -41,5 +47,3 @@ else
     -D "uid=${username},ou=People,dc=umich,dc=edu" \
     -W
 fi
-
-rm "${TMPFILE}"
