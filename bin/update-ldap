@@ -4,7 +4,7 @@ TMPFILE=$(mktemp -p /tmp "update.ldif.XXXXXXXX")
 
 username="$1"
 directory_file="https://cms.lib.umich.edu/api/solr/staff"
-ldap_host="ldap://ldap.umich.edu"
+ldap_host="ldaps://ldap.umich.edu"
 
 if [ x"$username" = x"" ] ; then
   echo "usage: $0 <username>"
