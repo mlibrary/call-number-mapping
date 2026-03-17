@@ -2,7 +2,7 @@ FROM php:8.3-apache
 
 RUN apt-get update \
  && apt-get upgrade -y \
- && apt-get install -y jq ldap-utils libapache2-mod-authnz-external libapache2-mod-auth-openidc git unzip \
+ && apt-get install -y jq ldap-utils libapache2-mod-authnz-external libapache2-mod-auth-openidc git unzip gettext-base \
  && apt-get autoremove -y \
  && apt-get clean \
  && (apt-get distclean || rm -rf  /var/cache/apt/archives /var/lib/apt/lists/*) \
@@ -23,3 +23,7 @@ COPY src /var/www/src
 COPY html /var/www/html
 COPY templates /var/www/templates
 COPY bin/update-ldap /usr/local/bin/
+COPY bin/docker-envsubst-entrypoint /usr/local/bin/docker-envsubst-entrypoint
+
+ENTRYPOINT ["docker-envsubst-entrypoint"]
+CMD ["apache2-foreground"]
