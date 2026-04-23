@@ -22,5 +22,11 @@ services:
     - "db:/var/lib/mysql"
     - "./db/init-data-tables.sql:/docker-entrypoint-initdb.d/init-data.sql"
 
+  apache-exporter:
+    image: bitnami/apache-exporter:latest@sha256:706ec12528bad17ee1a41fb7c6e002b076f123392cdbac54651ae8f6f907bebb
+    command: [ "--scrape_uri=http://web:81/server-status?auto" ]
+    profiles:
+      - monitoring
+
 volumes:
   db:

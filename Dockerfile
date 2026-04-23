@@ -12,9 +12,12 @@ RUN apt-get update \
  && docker-php-ext-install pdo_mysql \
  && php -r "copy('https://getcomposer.org/download/latest-stable/composer.phar', '/usr/local/bin/composer');" \
  && chmod +x /usr/local/bin/composer \
- && git config --global --add safe.directory /var/www
+ && git config --global --add safe.directory /var/www \
+ && mkdir -p /var/www/empty
 
-COPY auth_openidc.conf /etc/apache2/mods-enabled/auth_openidc.conf
+COPY apache/auth_openidc.conf /etc/apache2/mods-enabled/auth_openidc.conf
+COPY apache/ports.conf /etc/apache2/ports.conf
+COPY apache/001-server-status.conf /etc/apache2/sites-enabled/001-server-status.conf
 COPY composer.lock composer.json /var/www/
 
 RUN cd /var/www && composer install
