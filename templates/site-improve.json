@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Admin Index — no topic selected",
+    "source": "/var/www/html/admin/index.php",
+    "target": "/var/www/html/site-improve/site-improve-001.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": {},
+    "_POST": {}
+  },
+  {
+    "name": "Admin Index — topic with LC mappings (Arts & Humanities, id=1)",
+    "source": "/var/www/html/admin/index.php",
+    "target": "/var/www/html/site-improve/site-improve-002.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "narrow": "1" },
+    "_POST": {}
+  },
+  {
+    "name": "Admin Index — topic with Dewey mappings (Physics, id=4)",
+    "source": "/var/www/html/admin/index.php",
+    "target": "/var/www/html/site-improve/site-improve-003.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "narrow": "4" },
+    "_POST": {}
+  },
+  {
+    "name": "Search — empty form",
+    "source": "/var/www/html/admin/search.php",
+    "target": "/var/www/html/site-improve/site-improve-004.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": {},
+    "_POST": {}
+  },
+  {
+    "name": "LC Search — empty form",
+    "source": "/var/www/html/admin/lcsearch.php",
+    "target": "/var/www/html/site-improve/site-improve-005.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": {},
+    "_POST": {}
+  },
+  {
+    "name": "LC Search — results for alpha=A",
+    "source": "/var/www/html/admin/lcsearch.php",
+    "target": "/var/www/html/site-improve/site-improve-006.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "alpha": "A", "num_op": ">=", "cut_op": ">=" },
+    "_POST": {}
+  },
+  {
+    "name": "LC Search — results for alpha=P (Literature range)",
+    "source": "/var/www/html/admin/lcsearch.php",
+    "target": "/var/www/html/site-improve/site-improve-007.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "alpha": "P", "num_op": ">=", "cut_op": ">=" },
+    "_POST": {}
+  },
+  {
+    "name": "Dewey Search — empty form",
+    "source": "/var/www/html/admin/deweysearch.php",
+    "target": "/var/www/html/site-improve/site-improve-008.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": {},
+    "_POST": {}
+  },
+  {
+    "name": "Dewey Search — results for num=530 (within Physics range)",
+    "source": "/var/www/html/admin/deweysearch.php",
+    "target": "/var/www/html/site-improve/site-improve-009.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "num": "530", "num_op": "=" },
+    "_POST": {}
+  },
+  {
+    "name": "Dewey Search — results for num=100 (Philosophy range)",
+    "source": "/var/www/html/admin/deweysearch.php",
+    "target": "/var/www/html/site-improve/site-improve-010.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "num": "100", "num_op": ">=" },
+    "_POST": {}
+  },
+  {
+    "name": "Edit — no id (self-destruct fallback)",
+    "source": "/var/www/html/admin/edit.php",
+    "target": "/var/www/html/site-improve/site-improve-011.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": {},
+    "_POST": {}
+  },
+  {
+    "name": "Edit — LC mapping (lc id=1)",
+    "source": "/var/www/html/admin/edit.php",
+    "target": "/var/www/html/site-improve/site-improve-012.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "id": "1", "type": "lc" },
+    "_POST": {}
+  },
+  {
+    "name": "Edit — Dewey mapping (dewey id=1)",
+    "source": "/var/www/html/admin/edit.php",
+    "target": "/var/www/html/site-improve/site-improve-013.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "id": "1", "type": "dewey" },
+    "_POST": {}
+  },
+  {
+    "name": "Modify Topics — default view",
+    "source": "/var/www/html/admin/modify.php",
+    "target": "/var/www/html/site-improve/site-improve-014.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": {},
+    "_POST": {}
+  },
+  {
+    "name": "Modify Topics — with category search results (search=sci)",
+    "source": "/var/www/html/admin/modify.php",
+    "target": "/var/www/html/site-improve/site-improve-015.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "search": "sci" },
+    "_POST": {}
+  },
+  {
+    "name": "Modify Topics — with success message",
+    "source": "/var/www/html/admin/modify.php",
+    "target": "/var/www/html/site-improve/site-improve-016.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "message": "New association added." },
+    "_POST": {}
+  },
+  {
+    "name": "Reports — report form",
+    "source": "/var/www/html/admin/reports.php",
+    "target": "/var/www/html/site-improve/site-improve-017.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": {},
+    "_POST": {}
+  },
+  {
+    "name": "Report Output — all topics (topic=0)",
+    "source": "/var/www/html/admin/reportout.php",
+    "target": "/var/www/html/site-improve/site-improve-018.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "topic": "0" },
+    "_POST": {}
+  },
+  {
+    "name": "Report Output — single topic (Arts & Humanities, id=1)",
+    "source": "/var/www/html/admin/reportout.php",
+    "target": "/var/www/html/site-improve/site-improve-019.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "topic": "1" },
+    "_POST": {}
+  },
+  {
+    "name": "Tree — full topic tree",
+    "source": "/var/www/html/admin/tree.php",
+    "target": "/var/www/html/site-improve/site-improve-020.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": {},
+    "_POST": {}
+  }
+]
+

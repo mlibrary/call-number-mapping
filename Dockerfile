@@ -10,6 +10,8 @@ RUN apt-get update \
  && mkdir -p /var/cache/apache2/mod_auth_openidc/oidc-sessions /var/cache/apache2/twig /var/www/lib \
  && chown www-data:www-data /var/cache/apache2/mod_auth_openidc/oidc-sessions /var/cache/apache2/twig \
  && docker-php-ext-install pdo_mysql \
+ && docker-php-ext-configure pcntl --enable-pcntl \
+ && docker-php-ext-install pcntl \
  && php -r "copy('https://getcomposer.org/download/latest-stable/composer.phar', '/usr/local/bin/composer');" \
  && chmod +x /usr/local/bin/composer \
  && git config --global --add safe.directory /var/www \
@@ -26,6 +28,7 @@ COPY src /var/www/src
 COPY html /var/www/html
 COPY templates /var/www/templates
 COPY bin/update-ldap /usr/local/bin/
+COPY bin/compile-site-improve /usr/local/bin/
 COPY bin/docker-envsubst-entrypoint /usr/local/bin/docker-envsubst-entrypoint
 
 ENTRYPOINT ["docker-envsubst-entrypoint"]

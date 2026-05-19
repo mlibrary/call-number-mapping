@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Docs: https://design-system.lib.umich.edu/reusable-designs/website-header/ -->
+    <meta charset="UTF-8">
+    <title>Modify Topics - Call Number Mapping</title>
+    <!-- Place this in the <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/umich-lib.css" rel="stylesheet"/>
+    <link href="/hlb.css" rel="stylesheet"/>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/dist/umich-lib/umich-lib.esm.js"></script>
+  </head>
+  <body>
+    <!-- Place this in the <body> -->
+    <div>
+      <m-website-header name="Call Number Mapping" variant="dark">
+                  <a href="https://shibboleth.umich.edu/cgi-bin/logout?https://staff.lib.umich.edu/" style="color: white;">Log out</a>
+              </m-website-header>
+    </div>
+    <main class="viewport-container">
+      <h1>Modify Topics</h1>
+            <div class="section">
+        <div class="box">
+ <nav aria-label="primary">
+  <span class="navigation"><a href="index.php">Browse and Map</a></span>
+  <span class="navigation"><a href="search.php">Search</a></span>
+  <span class="navigation active"><a href="modify.php">Modify Topics</a></span>
+  <span class="navigation"><a href="reports.php">Reports</a></span>
+  <span class="navigation"><a href="tree.php">Tree</a></span>
+ </nav>
+</div>
+
+      </div>
+            <div class="section">
+        
+
+      </div>
+            <div class="section">
+        <div class="box">
+  <h2>Add a Topic</h2>
+  <div>Add a new Topic by completing the form below. You probably want to to select a parent to be associated with this new Topic.</div>
+  <br />
+  <div>
+    <form action="newtopic.php">
+      <div>
+        <div class="widecolumn"><label for="newTopic">New Topic:</label></div>
+        <div class="lastcolumn"> <input type="text" name="name" id="newTopic" /> </div>
+      </div>
+      <div>
+        <div class="widecolumn"><label for="associateWithExistingParent">Associate With Existing Parent:</label></div>
+        <div class="lastcolumn">
+          <select name="parent" id="associateWithExistingParent">
+                          <option value="0">Top Level Node</option>
+                          <option value="1">Arts &amp; Humanities</option>
+                          <option value="3">Literature</option>
+                          <option value="4">Physics</option>
+                          <option value="2">Science &amp; Technology</option>
+                      </select>
+        </div>
+      </div>
+      <input type="submit" value="Add Topic">
+    </form>
+  </div>
+</div>
+
+
+      </div>
+            <div class="section">
+        <div class="box">
+  <h2>Create an Association between Topics</h2>
+  <div>
+    Existing Topics can be associated with more than parent Topic. Use the pulldown menus to associate a Topics with a Level One.
+  </div>
+  <br />
+  <div>
+    <form action="associate.php">
+      <div>
+        <div class="widecolumn"><label for="childTopic">Child Topic:</label></div>
+        <div class="lastcolumn">
+          <select name="child" id="childTopic">
+                          <option value="1">Arts &amp; Humanities</option>
+                          <option value="3">Literature</option>
+                          <option value="4">Physics</option>
+                          <option value="2">Science &amp; Technology</option>
+                      </select>
+        </div>
+      </div>
+      <div>
+        <div class="widecolumn"><label for="associateWithParent">Associate With Parent:</label></div>
+        <div class="lastcolumn">
+          <select name="parent" id="associateWithParent">
+                          <option value="1">Arts &amp; Humanities</option>
+                          <option value="3">Literature</option>
+                          <option value="4">Physics</option>
+                          <option value="2">Science &amp; Technology</option>
+                      </select>
+        </div>
+      </div>
+      <input type="submit" value="Associate Topics">
+    </form>
+  </div>
+</div>
+
+      </div>
+            <div class="section">
+        <div class="box">
+  <h2>Search for a Topic</h2>
+  <div>
+    To search for or delete a Topic, enter it in the search box below.
+  </div>
+  <form action="modify.php">
+    <div>
+      <div class="column"><label for="searchForTopic">Topic:</label></div>
+      <div class="column"> <input type="text" name="search" value="sci" id="searchForTopic"/> </div>
+    </div>
+    <div class="lastcolumn">
+      <input type="submit" value="Search">
+    </div>
+  </form>
+</div>
+
+      </div>
+            <div class="section">
+        <div class="box">
+  <h2>Topic Search Results</h2>
+  <div>
+    <table class="assignments">
+      <tr>
+        <th class="light">Topic Name</th>
+        <th class="light wide">Topic Parents</th>
+        <th class="light wide">Topic Children</th>
+        <th class="light"># Mappings</th>
+        <th class="light"> Action </th>
+      </tr>
+              <tr>
+          <td class="light"> Science &amp; Technology </td>
+          <td class="light wide">
+                      </td>
+          <td class="light wide">
+                          Physics<br />
+                      </td>
+          <td class="light"> 2</td>
+          <td class="light">
+            <form action="deletetopic.php" method="post" onsubmit="return confirm('Really delete topic: Science &amp; Technology with 2 mappings?')">
+              <input type="hidden" name="id" value="2" />
+              <input type="hidden" name="search" value="sci" />
+              <input type="submit" value="Delete topic: Science &amp; Technology" />
+            </form>
+          </td>
+        </tr>
+          </table>
+  </div>
+</div>
+
+      </div>
+          </main>
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About</h3>
+          <p>Call Number Mapping manages the mapping between call numbers and the 3-tier Academic Disciplines hierarchy.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>University of Michigan Library<br>
+          <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=1751&RequestorType=Service">Contact Us</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Accessibility</h3>
+          <p><a href="/accessibility.html">Accessibility Statement</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Regents of the University of Michigan</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Docs: https://design-system.lib.umich.edu/reusable-designs/website-header/ -->
+    <meta charset="UTF-8">
+    <title>Reports - Call Number Mapping</title>
+    <!-- Place this in the <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/umich-lib.css" rel="stylesheet"/>
+    <link href="/hlb.css" rel="stylesheet"/>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/dist/umich-lib/umich-lib.esm.js"></script>
+  </head>
+  <body>
+    <!-- Place this in the <body> -->
+    <div>
+      <m-website-header name="Call Number Mapping" variant="dark">
+                  <a href="https://shibboleth.umich.edu/cgi-bin/logout?https://staff.lib.umich.edu/" style="color: white;">Log out</a>
+              </m-website-header>
+    </div>
+    <main class="viewport-container">
+      <h1>Reports</h1>
+            <div class="section">
+        <div class="box">
+ <nav aria-label="primary">
+  <span class="navigation"><a href="index.php">Browse and Map</a></span>
+  <span class="navigation"><a href="search.php">Search</a></span>
+  <span class="navigation"><a href="modify.php">Modify Topics</a></span>
+  <span class="navigation active"><a href="reports.php">Reports</a></span>
+  <span class="navigation"><a href="tree.php">Tree</a></span>
+ </nav>
+</div>
+
+      </div>
+            <div class="section">
+        <div class="box">
+  <div>
+    <h2>Export HLB Data</h2>
+    To export mappings for an HLB category, browse to that category using the menu below and click the <strong>Export Mappings</strong> button.
+    To export data for all categories, use the first menu option All Categories.
+  </div>
+  <br />
+  <div>
+    <form action="reportout.php">
+      <div>
+        <div class="widecolumn"><label for="exportHLBDataTopic">Topic:</label></div>
+        <div class="lastcolumn">
+          <select name="topic" id="exportHLBDataTopic">
+                          <option value="0">Top Level Node</option>
+                          <option value="1">Arts &amp; Humanities</option>
+                          <option value="3">Literature</option>
+                          <option value="4">Physics</option>
+                          <option value="2">Science &amp; Technology</option>
+                      </select>
+        </div>
+      </div>
+      <input type="submit" value="Export Mappings">
+    </form>
+  </div>
+</div>
+
+      </div>
+          </main>
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About</h3>
+          <p>Call Number Mapping manages the mapping between call numbers and the 3-tier Academic Disciplines hierarchy.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>University of Michigan Library<br>
+          <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=1751&RequestorType=Service">Contact Us</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Accessibility</h3>
+          <p><a href="/accessibility.html">Accessibility Statement</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Regents of the University of Michigan</p>
+      </div>
+    </footer>
+  </body>
+</html>

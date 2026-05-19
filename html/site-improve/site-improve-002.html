@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Docs: https://design-system.lib.umich.edu/reusable-designs/website-header/ -->
+    <meta charset="UTF-8">
+    <title>Browse and Map - Call Number Mapping</title>
+    <!-- Place this in the <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/umich-lib.css" rel="stylesheet"/>
+    <link href="/hlb.css" rel="stylesheet"/>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/dist/umich-lib/umich-lib.esm.js"></script>
+  </head>
+  <body>
+    <!-- Place this in the <body> -->
+    <div>
+      <m-website-header name="Call Number Mapping" variant="dark">
+                  <a href="https://shibboleth.umich.edu/cgi-bin/logout?https://staff.lib.umich.edu/" style="color: white;">Log out</a>
+              </m-website-header>
+    </div>
+    <main class="viewport-container">
+      <h1>Browse and Map</h1>
+            <div class="section">
+        <div class="box">
+ <nav aria-label="primary">
+  <span class="navigation active"><a href="index.php">Browse and Map</a></span>
+  <span class="navigation"><a href="search.php">Search</a></span>
+  <span class="navigation"><a href="modify.php">Modify Topics</a></span>
+  <span class="navigation"><a href="reports.php">Reports</a></span>
+  <span class="navigation"><a href="tree.php">Tree</a></span>
+ </nav>
+</div>
+
+      </div>
+            <div class="section">
+        <div class="box">
+  To access or create mappings for a Library Browse Topic, browse to that topic using the menu below and click the <strong>Show Associated Mappings</strong> button. <br /><br />
+  <form method="post">
+    <label for="narrow">
+     Narrow Topic: 
+    </label>
+    <br />
+    <select id="narrow" name="narrow">
+            <option value="3">Literature</option>
+            <option value="4">Physics</option>
+          </select>
+    <br />
+    <input type="submit" value="Show Associated Mappings" />
+  </form>
+</div>
+
+      </div>
+            <div class="section">
+        <div class="box">
+	<h2>Associated mappings for:
+		Arts &amp; Humanities</h2>
+</div>
+<div>
+	To add a mapping, enter a beginning and ending call number and click the "<strong>Add new mapping</strong>" button.
+</div>
+<br/>
+<form method="post" action="add.php">
+	<label><input type="radio" name="type" value="lc" checked/> Library of Congress</label>
+	<label><input type="radio" name="type" value="dewey"/> Dewey</label>
+	<input type="hidden" value="1" name="id"/>
+	<div>
+		<div class="clear">
+			<fieldset>
+				<legend>
+					Range begin:
+				</legend>
+				<div class="column">
+					<label for="alphaRangeBegin">Alpha</label>
+					<input size="3" type="text" id="alphaRangeBegin" name="alphaStart"/>
+				</div>
+				<div class="mediumcolumn">
+					<label for="numberRangeBegin">Number</label>
+					<input size="12" type="text" id="numberRangeBegin" name="numberStart"/>
+				</div>
+				<div class="column">
+					<label for="cutterRangeBegin">Cutter</label>
+					<input size="5" type="text" id="cutterRangeBegin" name="cutterStart"/>
+				</div>
+				<div class="lastcolumn"></div>
+			</fieldset>
+		</div>
+		<div class="clear">
+			<fieldset>
+				<legend>
+					Range end:
+				</legend>
+				<div class="clear">
+					<div class="column">
+						<label for="alphaRangeEnd">Alpha</label>
+						<input size="3" type="text" id="alphaRangeEnd" name="alphaEnd"/>
+					</div>
+					<div class="mediumcolumn">
+						<label for="numberRangeEnd">Number</label>
+						<input size="12" type="text" id="numberRangeEnd" name="numberEnd"/>
+					</div>
+					<div class="column">
+						<label for="cutterRangeEnd">Cutter</label>
+						<input size="5" type="text" id="cutterRangeEnd" name="cutterEnd"/>
+					</div>
+					<div class="lastcolumn"></div>
+				</div>
+			</fieldset>
+		</div>
+
+		<div class="clear">
+			<label for="rangeNote">Range note:</label><br/>
+			<textarea name="notes" id="rangeNote" rows="5" cols="80"></textarea>
+		</div>
+		<br/>
+		<input type="submit" value="Add new mapping"/><input type="reset" value="Reset form"/>
+	</div>
+</form>
+
+<div class="box">
+	<div>
+		To copy one or more ranges to another topic, select each range and click the "<strong>copy selected ranges</strong>" button below.
+	</div>
+	<div>
+		<table class="assignments">
+			<tr>
+				<th class="dark">Select</th>
+				<th class="light">Range Begin</th>
+				<th class="light">Range End</th>
+				<th class="dark">Notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<th class="light"></th>
+				<th class="light"></th>
+			</tr>
+			          				<tr>
+					<td class="dark"><input type="checkbox" name="lc[]" value="1" aria-label="Select LC range A 0  to BZ 9999.999 "/></td>
+					<td class="light">
+						A
+						0
+						
+					</td>
+					<td class="light">
+						BZ
+						9999.999
+						
+					</td>
+					<td class="dark">
+						General Humanities
+					</td>
+					<td class="light">
+            <form action="edit.php" method="GET">
+              <input type="hidden" name="id" value="1"/>
+              <input type="hidden" name="type" value="lc"/>
+              <input type="submit" value="Edit range A 0  to BZ 9999.999 "/>
+            </form>
+					</td>
+					<td class="light">
+            <form action="delete.php" method="POST">
+              <input type="hidden" name="id" value="1"/>
+              <input type="hidden" name="type" value="lc"/>
+              <input type="hidden" name="narrow" value="1"/>
+              <input type="submit" value="Delete range A 0  to BZ 9999.999 "/>
+            </form>
+					</td>
+				</tr>
+						        				<tr>
+					<td class="dark"><input type="checkbox" name="dewey[]" value="3" aria-label="Select Dewey range 100 to 199.999"/></td>
+					<td class="light">
+						100
+					</td>
+					<td class="light">
+						199.999
+					</td>
+					<td class="dark">
+						Philosophy &amp; Psychology
+					</td>
+					<td class="light">
+            <form action="edit.php" method="GET">
+              <input type="hidden" name="id" value="3"/>
+              <input type="hidden" name="type" value="dewey"/>
+              <input type="submit" value="Edit range 100 to 199.999"/>
+            </form>
+					</td>
+					<td class="light">
+            <form action="delete.php" method="POST">
+              <input type="hidden" name="id" value="3"/>
+              <input type="hidden" name="type" value="dewey"/>
+              <input type="hidden" name="narrow" value="1"/>
+              <input type="submit" value="Delete range 100 to 199.999"/>
+            </form>
+					</td>
+				</tr>
+					</table>
+		<form action="copy.php" method="post" id="copy_form">
+			<input type="hidden" value="1" name="id"/>
+			<label for="copyToTopic">Destination topic for copying ranges</label>
+			<select name="target" id="copyToTopic" aria-label="Destination topic for copying ranges">
+									<option value="3" >Literature</option>
+									<option value="4" >Physics</option>
+							</select>
+
+			<input type="submit" value="Copy selected ranges"/>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+const form = document.getElementById('copy_form');
+async function sendData() {
+  let formData = new FormData(form);
+  const inputs = document.querySelectorAll('table.assignments input[type="checkbox"]');
+  for (const input of inputs) {
+    if (input.checked) {
+      formData.append(input.name, input.value);
+    }
+  }
+  try {
+    const response = await fetch("copy.php", {
+      method: "POST",
+      body: formData
+    });
+    document.location.href = response.url;
+  } catch(e) {
+    console.error(e);
+  }
+}
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  sendData();
+});
+</script>
+
+      </div>
+          </main>
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About</h3>
+          <p>Call Number Mapping manages the mapping between call numbers and the 3-tier Academic Disciplines hierarchy.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>University of Michigan Library<br>
+          <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=1751&RequestorType=Service">Contact Us</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Accessibility</h3>
+          <p><a href="/accessibility.html">Accessibility Statement</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Regents of the University of Michigan</p>
+      </div>
+    </footer>
+  </body>
+</html>

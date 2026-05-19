@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Docs: https://design-system.lib.umich.edu/reusable-designs/website-header/ -->
+    <meta charset="UTF-8">
+    <title>Search - Call Number Mapping</title>
+    <!-- Place this in the <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/umich-lib.css" rel="stylesheet"/>
+    <link href="/hlb.css" rel="stylesheet"/>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/dist/umich-lib/umich-lib.esm.js"></script>
+  </head>
+  <body>
+    <!-- Place this in the <body> -->
+    <div>
+      <m-website-header name="Call Number Mapping" variant="dark">
+                  <a href="https://shibboleth.umich.edu/cgi-bin/logout?https://staff.lib.umich.edu/" style="color: white;">Log out</a>
+              </m-website-header>
+    </div>
+    <main class="viewport-container">
+      <h1>Search</h1>
+            <div class="section">
+        <div class="box">
+ <nav aria-label="primary">
+  <span class="navigation"><a href="index.php">Browse and Map</a></span>
+  <span class="navigation active"><a href="search.php">Search</a></span>
+  <span class="navigation"><a href="modify.php">Modify Topics</a></span>
+  <span class="navigation"><a href="reports.php">Reports</a></span>
+  <span class="navigation"><a href="tree.php">Tree</a></span>
+ </nav>
+</div>
+
+      </div>
+            <div class="section">
+        <div class="box">
+  Use the form below to search for associated Library of Congress or Dewey Call Numbers mapped to HLB topic. Click the <strong>Search</strong> button when you are done.
+</div>
+<div class="box" role="navigation" aria-label="Search type">
+  <h2>Choose Call Number System</h2>
+  <p>Select which call number system to search:</p>
+  <span class="navigation active"><a href="lcsearch.php" aria-current="page">Library of Congress</a></span>
+  <span class="navigation "> <a href="deweysearch.php">Dewey Decimal</a> </span>
+</div>
+
+      </div>
+            <div class="section">
+        <div class="box">
+  <h2>Look for Library of Congress Call Numbers with</h2>
+  <form method="post" action="lcsearch.php">
+    <div class="clear">
+      <div class="column"> <label for="LCAlpha">Alpha:</label> </div>
+      <div class="column"> &nbsp;</div>
+      <div class="column"> <input type="text" name="alpha" size="5" value="" id="LCAlpha"> </div>
+      <div class="lastcolumn"> <em>Required.</em> Use between one and three characters (<strong>e.g., "RC"</strong>) </div>
+    </div>
+    <div class="clear">
+      <div class="column"> <label for="LCNumber">+Number:</label> </div>
+      <div class="column">
+        <select name="num_op" aria-label="comparison operator">
+                      <option>&lt;=</option>
+                      <option>&gt;=</option>
+                      <option>=</option>
+                  </select>
+      </div>
+      <div class="column"> <input type="text" name="num" size="5" value="" id="LCNumber"> </div>
+      <div class="lastcolumn"> Optional. (<strong>e.g., >= 350</strong>) </div>
+    </div>
+    <div class="clear">
+      <div class="column"> <label for="LCCut">+Cut:</label> </div>
+      <div class="column">
+        <select name="cut_op" aria-label="comparison operator">
+                      <option>&lt;=</option>
+                      <option>&gt;=</option>
+                      <option>=</option>
+                  </select>
+      </div>
+      <div class="column"> <input type="text" name="cut" size="5" value="" id="LCCut"> </div>
+      <div class="lastcolumn"> Optional. One alpha followed by one or more numerals (<strong>e.g., >= N35</strong>) </div>
+    </div>
+
+    <br />
+    <input type="submit" value="Search" />
+  </form>
+</div>
+
+      </div>
+            <div class="section">
+        <div class="box">
+  <h2>Look for Dewey Call Numbers with</h2>
+  <form method="post" action="deweysearch.php">
+    <div class="clear">
+      <div class="column"> <label for="DeweyNumber">+Number:</label> </div>
+      <div class="column">
+        <select name="num_op" aria-label="Dewey number comparison operator">
+                      <option >&lt;=</option>
+                      <option >&gt;=</option>
+                      <option >=</option>
+                  </select>
+      </div>
+      <div class="column"> <input type="text" name="num" size="5" value="" id="DeweyNumber"> </div>
+      <div class="lastcolumn"> Required. (<strong>e.g., >= 800</strong>) </div>
+    </div>
+    <br />
+    <input type="submit" value="Search" />
+  </form>
+</div>
+
+      </div>
+          </main>
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About</h3>
+          <p>Call Number Mapping manages the mapping between call numbers and the 3-tier Academic Disciplines hierarchy.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>University of Michigan Library<br>
+          <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=1751&RequestorType=Service">Contact Us</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Accessibility</h3>
+          <p><a href="/accessibility.html">Accessibility Statement</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Regents of the University of Michigan</p>
+      </div>
+    </footer>
+  </body>
+</html>
