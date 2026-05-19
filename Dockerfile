@@ -28,7 +28,7 @@ COPY src /var/www/src
 COPY html /var/www/html
 COPY templates /var/www/templates
 COPY bin/update-ldap /usr/local/bin/
-COPY bin/compile-site-improve /usr/local/bin/
+COPY bin/build-siteimprove /usr/local/bin/
 COPY bin/docker-envsubst-entrypoint /usr/local/bin/docker-envsubst-entrypoint
 
 ENTRYPOINT ["docker-envsubst-entrypoint"]

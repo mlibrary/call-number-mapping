@@ -2,13 +2,13 @@
 /**
  * StubDatabase — drop-in replacement for Database using SQLite :memory:.
  *
- * Loaded by compile-site-improve when SITE_IMPROVE_STUB_DB=1 so that admin
+ * Loaded by build-siteimprove when SITE_IMPROVE_STUB_DB=1 so that admin
  * pages can render without a real MySQL connection.  Because the stub is
  * required *before* the autoloader loads Database.php, PHP uses this
  * definition and never instantiates the real one.
  *
  * Only SELECT queries are exercised by the rendering pages targeted by
- * site-improve.  The write helpers (add, update, delete, copy, …) are not
+ * siteimprove.  The write helpers (add, update, delete, copy, …) are not
  * called during a GET render, so INSERT/UPDATE/DELETE never hit the stub.
  */
 
