@@ -79,6 +79,6 @@ foreach ($urls as $loc) {
 }
 $xml .= "</urlset>\n";
 
-$sitemap_path = $doc_root . '/site-improve/sitemap_call_number_mapping.xml';
+$sitemap_path = $doc_root . '/site-improve/sitemap_cnm.dnd.xml';
 file_put_contents($sitemap_path, $xml);
 print("Wrote sitemap: {$sitemap_path}\n");
