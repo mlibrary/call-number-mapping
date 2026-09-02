@@ -15,7 +15,7 @@ services:
     - db
 
   db:
-    image: mariadb:11.5
+    image: mariadb:12.3
     env_file:
     - .env
     volumes:
@@ -23,7 +23,7 @@ services:
     - "./db/init-data-tables.sql:/docker-entrypoint-initdb.d/init-data.sql"
 
   apache-exporter:
-    image: bitnami/apache-exporter:latest@sha256:706ec12528bad17ee1a41fb7c6e002b076f123392cdbac54651ae8f6f907bebb
+    image: bitnami/apache-exporter:latest@sha256:e8251cd0660f6a795d3fd5984a24e6b5734340611a69dee6b1fea371d6d9283d
     command: [ "--scrape_uri=http://web:81/server-status?auto" ]
     profiles:
       - monitoring
