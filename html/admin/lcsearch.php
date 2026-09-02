@@ -32,7 +32,7 @@ $hlb->addContent('navigation', [ 'search_active' => 'active' ]);
 $hlb->addContent('search-overview', ['lc_active' => 'active' ]);
 $hlb->addContent('lc-search-form', $search_params);
 
-if (isset($alpha)) {
+if (isset($alpha) && !empty($alpha)) {
   $hlb->addContent('search-results', $hlb->getLcSearchResults($search_params));
 }
 

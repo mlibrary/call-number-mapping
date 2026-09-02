@@ -70,12 +70,12 @@
 	<div>
 		<table class="assignments">
 			<tr>
-				<th class="dark">Select</th>
-				<th class="light">Range Begin</th>
-				<th class="light">Range End</th>
-				<th class="dark">Notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				<th class="light"></th>
-				<th class="light"></th>
+				<th scope="col" class="dark">Select</th>
+				<th scope="col" class="light">Range Begin</th>
+				<th scope="col" class="light">Range End</th>
+				<th scope="col" class="dark">Notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				<th scope="col" class="light"></th>
+				<th scope="col" class="light"></th>
 			</tr>
 			{% for assignment in lc %}
           {% set range_label = 'range ' ~ assignment.alphaStart ~ ' ' ~ assignment.numStart ~ ' ' ~ assignment.cutStart ~ ' to ' ~ assignment.alphaEnd ~ ' ' ~ assignment.numEnd ~ ' ' ~ assignment.cutEnd %}
