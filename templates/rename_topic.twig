@@ -1,0 +1,33 @@
+<div class="box">
+  <dl>
+    <dt>Topic ID:</dt>
+    <dd>{{ topic.id|e('html') }}</dd>
+    <dt>Topic Name:</dt>
+    <dd>{{ topic.name|e('html') }}</dd>
+    <dt>Topic Parents:</dt>
+    {% for parent in parents %}
+      <dd>
+        {{ parent.name|e('html') }}
+      </dd>
+    {% else %}
+      <dd>None</dd>
+    {% endfor %}
+    <dt>Topic Children</dt>
+    {% for child in children %}
+      <dd>
+        {{ child.name|e('html') }}
+      </dd>
+    {% else %}
+      <dd>None</dd>
+    {% endfor %}
+    <dt>Topic Mappings:</dt>
+    <dd>{{ lc|length|e('html') }} LC Mappings</dd>
+    <dd>{{ dewey|length|e('html') }} Dewey Mappings</dd>
+  </dl>
+  <form action="rename.php" method="post">
+    <input type="hidden" name="id" value="{{ topic.id|e('html') }}">
+    <label for="name">New Name:</label>
+    <input type="text" id="name" name="name" value="{{ topic.name|e('html') }}">
+    <button type="submit">Rename</button>
+  </form>
+</div>

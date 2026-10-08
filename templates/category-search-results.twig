@@ -7,7 +7,7 @@
         <th scope="col" class="light wide">Topic Parents</th>
         <th scope="col" class="light wide">Topic Children</th>
         <th scope="col" class="light"># Mappings</th>
-        <th scope="col" class="light"> Action </th>
+        <th scope="col" class="light"> Actions </th>
       </tr>
       {% for topic in results %}
         <tr>
@@ -29,6 +29,7 @@
               <input type="hidden" name="search" value="{{ search|e('html') }}" />
               <input type="submit" value="Delete topic: {{ topic.name|e('html') }}" />
             </form>
+            <a href="renametopic.php?id={{ topic.id|e('html') }}">Rename topic: {{ topic.name|e('html') }}</a>
           </td>
         </tr>
       {% endfor %}

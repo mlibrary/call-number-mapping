@@ -15,6 +15,11 @@ foreach (['parent', 'name'] as $var) {
     $$var = '';
   }
 }
+if (empty($name)) {
+  $message = "No name provided for the new topic.";
+  header('location: modify.php?message=' . rawurlencode($message));
+  exit;
+}
 
 if ($hlb->associateTopics($hlb->createTopic($name), $parent)) {
   $message = "New association added.";

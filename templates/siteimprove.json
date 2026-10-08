@@ -142,6 +142,14 @@
     "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
     "_GET": {},
     "_POST": {}
+  },
+  {
+    "name": "Rename — rename topic form (id=114)",
+    "source": "/var/www/html/admin/renametopic.php",
+    "target": "/var/www/html/siteimprove/page-021.html",
+    "_SERVER": { "REMOTE_USER": "siteimprove", "REQUEST_METHOD": "GET" },
+    "_GET": { "id": "114" },
+    "_POST": {}
   }
 ]
 

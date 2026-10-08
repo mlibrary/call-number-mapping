@@ -267,6 +267,25 @@ ORDER by name
     return TRUE;
   }
 
+  public function getParents($child) {
+    $sql = "SELECT hlb3_topic.id, hlb3_topic.name FROM hlb3_topic JOIN hlb3_topic_topic ON hlb3_topic.id = hlb3_topic_topic.parent WHERE hlb3_topic_topic.child = :child ORDER BY name";
+    return $this->db->getSQL($sql, [":child" => $child]);
+  }
+
+  public function getChildren($parent) {
+    $sql = "SELECT hlb3_topic.id, hlb3_topic.name FROM hlb3_topic JOIN hlb3_topic_topic ON hlb3_topic.id = hlb3_topic_topic.child WHERE hlb3_topic_topic.parent = :parent ORDER BY name";
+    return $this->db->getSQL($sql, [":parent" => $parent]);
+  }
+
+  public function getParentIds($child) {
+    $sql = "SELECT parent FROM hlb3_topic_topic WHERE child = :child ORDER BY parent";
+    $ret = [];
+    foreach ($this->db->getSQL($sql, [":child" => $child]) as $row) {
+      $ret[] = $row['parent'];
+    }
+    return $ret;
+  }
+
   public function getChildrenIds($parent) {
     $sql = "SELECT child FROM hlb3_topic_topic WHERE parent = :parent ORDER BY child";
     $ret = [];
@@ -333,6 +352,12 @@ ORDER BY
     return $this->db->getSQL($sql, [":id" => $id]);
   }
 
+  public function renameTopic($id, $name) {
+    $sql = "UPDATE hlb3_topic SET name = :name WHERE id = :id";
+    $this->db->getSQL($sql, [":name" => $name, ":id" => $id]);
+    return $this;
+  }
+
   public function getTopicNameById($id) {
     $data = $this->db->getSQL("SELECT name FROM hlb3_topic WHERE id = :id order by name", [":id" => $id]);
     return $data[0]['name'];
@@ -361,6 +386,13 @@ ORDER BY
 
   public function getTopics() {
     return $this->db->getSQL("SELECT id, name FROM hlb3_topic ORDER BY name");
+  }
+
+  public function getTopic($id) {
+    return $this->getMappingsParams($id) + [
+      'parents' => $this->getParents($id),
+      'children' => $this->getChildren($id),
+    ];
   }
 
   public function update($id, $alphaStart, $numStart, $cutStart, $alphaEnd, $numEnd, $cutEnd, $notes, $type) {
