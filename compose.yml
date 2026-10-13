@@ -23,7 +23,7 @@ services:
     - "./db/init-data-tables.sql:/docker-entrypoint-initdb.d/init-data.sql"
 
   apache-exporter:
-    image: bitnami/apache-exporter:latest@sha256:c43818fb62d540e0bae0c6b5f4bfd6baff9799b55e87ed31ec84318b19e66217
+    image: bitnami/apache-exporter:latest@sha256:250bd3f8a98e3438100c796ec69f36e1b7f1b4d0f74fe2aa113f44aa6b588bf4
     command: [ "--scrape_uri=http://web:81/server-status?auto" ]
     profiles:
       - monitoring
