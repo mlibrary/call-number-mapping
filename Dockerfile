@@ -1,4 +1,4 @@
-FROM bertrama/php8.5.12-apache:latest
+FROM bertrama/php8.5.12-apache:latest@sha256:fe1df6ad1d5d9f7b8b66a1eb11d66de463fe38d4df2c13d3536b7d2fb37ac78e
 
 RUN apt-get update \
  && apt-get upgrade -y \
