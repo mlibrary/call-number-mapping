@@ -2,17 +2,26 @@ FROM php:8.5-apache@sha256:5fec3fb1f0322c20a01c8af35a09a96f3a83aa369650b0fed161e
 
 RUN apt-get update \
  && apt-get upgrade -y \
- && apt-get install -y jq ldap-utils libapache2-mod-authnz-external libapache2-mod-auth-openidc git unzip gettext-base \
+ && apt-get install -y \
+     jq ldap-utils libapache2-mod-authnz-external \
+     libapache2-mod-auth-openidc git unzip gettext-base \
  && apt-get autoremove -y \
  && apt-get clean \
  && (apt-get distclean || rm -rf  /var/cache/apt/archives /var/lib/apt/lists/*) \
  && a2enmod authnz_ldap \
- && mkdir -p /var/cache/apache2/mod_auth_openidc/oidc-sessions /var/cache/apache2/twig /var/www/lib \
- && chown www-data:www-data /var/cache/apache2/mod_auth_openidc/oidc-sessions /var/cache/apache2/twig \
+ && mkdir -p \
+     /var/cache/apache2/mod_auth_openidc/oidc-sessions \
+     /var/cache/apache2/twig /var/www/lib \
+ && chown \
+     www-data:www-data \
+    /var/cache/apache2/mod_auth_openidc/oidc-sessions \
+    /var/cache/apache2/twig \
  && docker-php-ext-install pdo_mysql \
  && docker-php-ext-configure pcntl --enable-pcntl \
  && docker-php-ext-install pcntl \
- && php -r "copy('https://getcomposer.org/download/latest-stable/composer.phar', '/usr/local/bin/composer');" \
+ && curl \
+     -o /usr/local/bin/composer \
+     https://getcomposer.org/download/latest-stable/composer.phar \
  && chmod +x /usr/local/bin/composer \
  && git config --global --add safe.directory /var/www \
  && mkdir -p /var/www/empty
