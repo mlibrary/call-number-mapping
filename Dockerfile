@@ -24,7 +24,8 @@ RUN apt-get update \
      https://getcomposer.org/download/latest-stable/composer.phar \
  && chmod +x /usr/local/bin/composer \
  && git config --global --add safe.directory /var/www \
- && mkdir -p /var/www/empty
+ && mkdir -p /var/www/empty \
+ && echo "session.upload_progress.enabled = 0" > /usr/local/etc/php/conf.d/99-upload-progress.ini
 
 COPY apache/auth_openidc.conf /etc/apache2/mods-enabled/auth_openidc.conf
 COPY apache/ports.conf /etc/apache2/ports.conf
